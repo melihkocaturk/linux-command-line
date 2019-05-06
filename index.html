@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Melih Kocatürk">
+    <meta name="description" content="Linux komut satırını bir profesyonel gibi kullanın.">
+    <link rel="stylesheet" href="assets/css/vendor.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <title>sudo</title>
+  </head>
+  <body>
+
+    <!-- header -->
+    <header class="header header-sticky header-minimal-light">
+      <div class="container">
+        <div class="row">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="../../index.html" class="navbar-brand"><img src="assets/images/logo.svg" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Anasayfa</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="resources.html">Kaynaklar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://kodaman.co/category/linux/" target="blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://itsfoss.tradepub.com/category/information-technology-servers-and-linux-server-os/806/" target="blank" rel="nofollow">Ücretsiz Kitaplar</a>
+                </li>
+              </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Türkçe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://linuxcommand.org/" target="blank" rel="nofollow">English</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- / header -->
+
+    <section>
+      <div class="container">
+        <div class="row justify-content-between">
+
+          <!-- toc -->
+          <aside class="col-lg-3">
+            <div class="sticky sticky-with-header">
+              <div class="overlay-menu boxed bg-dark text-white mb-3 mb-lg-0">
+                <ul id="page-nav" class="nav flex-column nav-vertical">
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#menu-1" role="button" aria-expanded="false" aria-controls="menu-1">Kabuk</a>
+                    <div class="collapse" id="menu-1" data-parent="#page-nav">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Kabuk Nedir?</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Navigasyon</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Sistemi Keşfetmek</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Dosya ve Dizinleri Yönetmek</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Komutlarla Çalışmak</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Yönlendirme</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Dünyayı Kabuk Olarak Görmek</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Klavye Püf Noktaları</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">İzinler</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Süreçler</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#menu-2" role="button" aria-expanded="false" aria-controls="menu-2">Yapılandırma</a>
+                    <div class="collapse" id="menu-2" data-parent="#page-nav">
+                      <div>
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Ortam</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Vi'ye Giriş</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Komut İstemini Özelleştirme</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#menu-3" role="button" aria-expanded="false" aria-controls="menu-3">Görevler ve Araçlar</a>
+                    <div class="collapse" id="menu-3" data-parent="#page-nav">
+                      <div>
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Paket Yönetimi</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Depolama Ortamı</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Ağ</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Dosya Arama</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Arşivleme ve Yedekleme</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Düzenli İfadeler</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Metin İşleme</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Çıktıyı Biçimlendirme</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Çıktı Almak</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Programları Derlemek</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#menu-4" role="button" aria-expanded="false" aria-controls="menu-4">Script Yazmak</a>
+                    <div class="collapse" id="menu-4" data-parent="#page-nav">
+                      <div>
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">İlk Scriptinizi Yazmak</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Projeye Başlamak</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Yukarıdan Aşağıya Tasarım</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Akış Kontrolü: if</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Klavye Girişini Okumak</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Akış Kontrölü: while/until</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Sorun Giderme</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Akış Kontrolü: case</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Konuma Bağlı Parametreler</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Akış Kontrolü: for</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Dizeler ve Sayılar</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Diziler</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Sıradışı Şeyler</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+          <!-- / toc -->
+
+          <!-- content -->
+          <article id="content" class="col-lg-7">
+            <h1 class="h2 font-weight-light mb-4">Neden <b>Linux Komut Satırı</b>'nı kullanmalısınız?</h1>
+            <p>Filmlerde "süper bilgisayar korsanı" - ultra güvenli askeri bilgisayara 30 saniyeden daha kısa bir sürede girebilecek olan adam - bilgisayara oturduğunda, bir fareye asla dokunmadığını fark ettiniz mi? Çünkü film yapımcıları, içgüdüsel olarak bir bilgisayarda gerçekten bir şey yapmanın tek yolunun klavyede yazmak olduğunu bildiğimizin farkında!</p>
+            <p>Günümüzde çoğu bilgisayar kullanıcısı sadece grafiksel kullanıcı arayüzüne aşinadır (GUI) ve satıcılar tarafından öğretilmiştir. Komut satırı arayüzünün (CLI) geçmişte korkunç bir şey olduğu iddia edilmektedir. Bu talihsiz bir durumdur, çünkü iyi bir komut satırı arayüzü, bilgisayarla yazılı iletişim kurmanın - insanlar için olduğu gibi - harika bir yoludur. "Grafiksel kullanıcı arayüzünün kolay işleri kolaylaştırdığı, komut satırı arayüzünün ise zor işleri mümkün kıldığı" söylendi ve bu bugün için hala doğrudur.</p>
+            <p>Linux, Unix işletim sistemleri ailesinden sonra modellendiğinden, komut satırı araçlarının zengin mirasını Unix'le paylaşıyor. Unix, 1980'lerin başında, grafiksel kullanıcı arayüzünün yaygın bir şekilde benimsenmesinden önce ortaya çıkmış ve bunun yerine, kapsamlı bir komut satırı arayüzü geliştirmiştir. Aslında, Linux'u ilk benimseyen kullanıcıların Windows NT'yi seçmelerinin en önemli nedenlerinden biri, "zor işleri mümkün kılan" güçlü komut satırı arayüzüne sahip olmasıydı.</p>
+          </article>
+          <!-- / content -->
+
+          <!-- scroll indicator -->
+          <div class="col-lg-1 d-none d-lg-block">
+            <div class="sticky sticky-with-header text-right">
+              <div id="pageProgress" class="page-progress" data-anchor-target="#content">
+                <div data-anchor-target="#content" data-top-top="height:0%;" data-bottom-bottom="height:100%;"></div>
+              </div>
+            </div>
+          </div>
+          <!-- / scroll indicator -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- go top -->
+    <div class="half">
+      <span class="half-bg bg-dark"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <div class="btn-frame">
+              <a data-scroll href="#top" class="btn btn-top btn-primary btn-ico btn-lg btn-rounded"><i class="icon-arrow-up2 fs-22"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / go top -->
+
+    <!-- footer -->
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row gutter-3">
+          <div class="col-12 col-md-2">
+            <a href=""><img src="assets/images/logo-white.svg" alt="Logo"></a>
+          </div>
+          <div class="col-12 col-md-6 text-white">
+            <p class="mb-5"><a href="http://linuxcommand.org/" target="blank" rel="nofollow">LinuxCommand.org</a> web sitesinden çevirilerek hazırlanmıştır. Bu içerik <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="blank" rel="nofollow">Attribution-NonCommercial-NoDerivs 3.0 Unported</a> lisansı altındadır.</p>
+            <p>Yayıncı, <a href="http://www.netimoloji.com/" target="blank">Netimoloji</a></p>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 ml-auto text-md-right">
+            <div class="dropdown">
+              <button class="btn btn-inverted btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Türkçe
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="http://linuxcommand.org/" target="blank" rel="nofollow">English</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- / footer -->
+
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
