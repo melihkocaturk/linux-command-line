@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Melih Kocatürk">
+    <meta name="description" content="Linux komut satırını bir profesyonel gibi kullanın.">
+    <link rel="stylesheet" href="assets/css/vendor.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <title>sudo</title>
+  </head>
+  <body>
+
+    <!-- header -->
+    <header class="header header-sticky header-minimal-light">
+      <div class="container">
+        <div class="row">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="index.html" class="navbar-brand"><img src="assets/images/logo.svg" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Anasayfa</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="resources.html">Kaynaklar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://kodaman.co/category/linux/" target="blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.tradepub.com/category/information-technology-servers-and-linux-server-os/806/" target="blank" rel="nofollow">Ücretsiz Kitaplar</a>
+                </li>
+              </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Türkçe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://linuxcommand.org/" target="blank" rel="nofollow">English</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- / header -->
+
+    <section>
+      <div class="container">
+        <div class="row justify-content-between">
+
+          <!-- toc -->
+          <aside class="col-lg-3">
+            <div class="sticky sticky-with-header">
+              <div class="overlay-menu boxed bg-dark text-white mb-3 mb-lg-0">
+                <ul id="page-nav" class="nav flex-column nav-vertical">
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#menu-1" role="button" aria-expanded="false" aria-controls="menu-1">Kabuk</a>
+                    <div class="collapse show" id="menu-1" data-parent="#page-nav">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-1">Kabuk Nedir?</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-2">Navigasyon</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-3">Sistemi Keşfetmek</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-4">Dosya ve Dizinleri Yönetmek</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-5">Komutlarla Çalışmak</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-6">Yönlendirme</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-7">Dünyayı Kabuk Olarak Görmek</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-8">Klavye Püf Noktaları</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-9">İzinler</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="learning-the-shell.html#section-10">Süreçler</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#menu-2" role="button" aria-expanded="false" aria-controls="menu-2">Yapılandırma</a>
+                    <div class="collapse" id="menu-2" data-parent="#page-nav">
+                      <div>
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a class="nav-link" href="configuration-and-the-environment.html#section-1">Ortam</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="onfiguration-and-the-environment.html#section-2">Vi'ye Giriş</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="onfiguration-and-the-environment.html#section-3">Komut İstemini Özelleştirme</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#menu-3" role="button" aria-expanded="false" aria-controls="menu-3">Görevler ve Araçlar</a>
+                    <div class="collapse" id="menu-3" data-parent="#page-nav">
+                      <div>
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-1">Paket Yönetimi</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-2">Depolama Ortamı</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-3">Ağ</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-4">Dosya Arama</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-5">Arşivleme ve Yedekleme</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-6">Düzenli İfadeler</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-7">Metin İşleme</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-8">Çıktıyı Biçimlendirme</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-9">Çıktı Almak</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="common-tasks-and-essential-tools.html#section-10">Programları Derlemek</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#menu-4" role="button" aria-expanded="false" aria-controls="menu-4">Script Yazmak</a>
+                    <div class="collapse" id="menu-4" data-parent="#page-nav">
+                      <div>
+                        <ul class="nav flex-column">
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-1">İlk Scriptinizi Yazmak</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-2">Projeye Başlamak</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-3">Yukarıdan Aşağıya Tasarım</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-4">Akış Kontrolü: if</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-5">Klavye Girişini Okumak</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-6">Akış Kontrölü: while/until</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-7">Sorun Giderme</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-8">Akış Kontrolü: case</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-9">Konuma Bağlı Parametreler</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-10">Akış Kontrolü: for</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-11">Dizeler ve Sayılar</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-12">Diziler</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="writing-shell-scripts.html#section-13">Sıradışı Şeyler</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+          <!-- / toc -->
+
+          <!-- content -->
+          <article id="content" class="col-lg-7">
+            <h1 class="h2 font-weight-light mb-4">Bölüm 1 - <b>Kabuk</b></h1>
+
+            <!-- what is the shell? -->
+            <section id="section-1">
+              <h2 class="section-title-2 mb-2">Kabuk Nedir? <a data-scroll="" href="#section-1" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>Komut satırından bahsettiğimiz zaman, gerçekte kabuktan bahsediyoruz. Kabuk, klavye komutlarını alan ve bunları yürütmek için işletim sistemine ileten bir programdır. Neredeyse tüm Linux dağıtımları <code>bash</code> denilen bir kabuk programıyla beraber gelmektedir. "bash" adı, "Bourne Again Shell" in kısaltmasıdır ve <em>Steve Bourne</em> tarafından yazılmış orijinal Unix kabuk programı olan <code>sh</code> için geliştirilmiş bir alternatiftir.</p>
+              <h3 class="h4 mb-2">Terminal Emülatörleri</h3>
+              <p>Bir grafik kullanıcı arayüzü (GUI) kullanırken, kabukla etkileşime girmek için terminal emülatörü adı verilen başka bir programa ihtiyacınız vardır. KDE <code>konsole</code> ve GNOME <code>gnome-terminal</code> kullanır, ancak büyük olasılıkla menümüzde basitçe "terminal" olarak adlandırılmıştır. Linux için kullanılabilecek çok sayıda başka terminal emülatörü mevcuttur, ancak hepsi temelde aynı şeyi yapar; kabuğa erişim izni verir.</p>
+              <h3 class="h4 mb-2">İlk Tuş Vuruşlarınızı Yapın</h3>
+              <p>Öyleyse başlayalım. Terminal emülatörünü başlatın! Açıldığında şöyle bir şey görmelisiniz:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$</code></pre>
+              <p>Buna kabuk istemi adı verilir ve kabuk giriş kabul etmeye hazır olduğunda görünür. Dağıtıma bağlı olarak görünüşü biraz değişse de, tipik olarak <code>username@machinename</code> içerecektir, bunu mevcut çalışma dizininiz ve dolar işareti takip eder.</p>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-info" role="alert">
+                    <h4>Not</h4>
+                    <p>Komut isteminin son karakteri dolar işareti yerine pound işareti (<code>#</code>) ise, terminal oturumunda <em>superuser</em> ayrıcalıkları vardır. Bu, <em>root</em> kullanıcı olarak oturum açtığınız veya superuser (yönetici) ayrıcalıkları sağlayan bir terminal emülatörü seçtiğiniz anlamına gelir.</p>
+                    <i class="icon-info-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <p>İşlerin şimdiye kadar iyi gittiğini varsayalım ve birşeyler yazmaya çalışalım. Bazı anlamsız ifadeler girin:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ kaekfjaeifj</code></pre>
+              <p>Kabuk bu komutun anlamsız olduğunu söyler ve bize bir şans daha verir.</p>
+              <pre><code class="language-bash">bash: kaekfjaeifj: command not found
+[me@linuxbox ~]$</code></pre>
+              <h4 class="h5 mb-2">Komut Geçmişi</h4>
+              <p>Yukarı ok tuşuna basarsanız, önceki komutun <code>kaekfjaeifj</code> komut isteminden sonra tekrar göründüğünü göreceğiz. Buna komut geçmişi denir. Çoğu Linux dağıtımı, varsayılan olarak son 1000 komutu hatırlar. Aşağı ok tuşuna basarsanız, önceki komut kaybolur.</p>
+              <h4 class="h5 mb-2">İmleç Hareketi</h4>
+              <p>Yukarı ok tuşuna tekrar basarak önceki komutu geri çağırın. Sol ve sağ ok tuşlarını denerseniz, imleci komut satırının herhangi bir yerinde nasıl konumlandıracağımızı göreceksiniz. Bu komutları düzenlemeyi kolaylaştırır.</p>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-info" role="alert">
+                    <h4>Not</h4>
+                    <p>Bir terminal penceresine kopyalama ve yapıştırma yapmak için <code>Ctrl-c</code> ve <code>Ctrl-v</code> kullanmaya çalışmayın, çünkü çalışmıyorlar. Bu kontrol kodlarının kabuk için farklı anlamları vardır ve Microsoft Windows'un piyasaya sürülmesinden yıllar önce atanmıştır.</p>
+                    <p></p>
+                    <i class="icon-info-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <h3 class="h4 mb-2">Bazı Basit Komutları Deneyin</h3>
+              <p>Artık terminal emülatörüne metin girmeyi öğrendiğimize göre, birkaç basit komut deneyelim. Şimdiki saati ve tarihi gösteren <code>date</code> komutuyla başlayalım.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ date
+Thu Mar 8 15:09:41 EST 2018</code></pre>
+              <p>İlgili başka bir komut, varsayılan olarak geçerli ayın takvimini görüntüleyen <code>cal</code>'dır.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cal
+March 2018
+Su Mo Tu We Th Fr Sa
+1 2 3
+4 5 6 7 8 9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28 29 30 31</code></pre>
+              <p>Disk sürücülerimizde mevcut boş alan miktarını görmek için <code>df</code> komutunu girin.</p>
+              <pre><code class="language-bash">Filesystem  1K-blocks Used      Available Use%  Mounted on
+/dev/sda2   15115452  5012392   9949716   34%   /
+/dev/sda5   59631908  26545424  30008432  47%   /home
+/dev/sda1   147764    17370     122765    13%   /boot
+tmpfs       256856    0         256856    0%    /dev/shm</code></pre>
+              <p>Aynı şekilde, boş hafıza miktarını görüntülemek için, <code>free</code> komutu girin.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ free
+      total         used    free    shared  buffers cached
+Mem:  513712        503976  9736    0       5312    122916
+-/+ buffers/cache:  375748  137964
+Swap:               104712  947536</code></pre>
+              <h3 class="h4 mb-2">Terminal Oturumunu Sonlandırmak</h3>
+              <p>Bir terminal oturumunu, emülatör penceresini kapatarak, kabuk isteminde <code>exit</code> komutunu girerek veya <code>Ctrl-d</code> tuşlarına basarak sonlandırabiliriz.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ exit</code></pre>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-warning" role="alert">
+                    <h4>Perdenin Arkasındaki Konsol</h4>
+                    <p>Çalışan bir terminal emülatörü olmasa bile, birkaç terminal oturumu grafik masaüstünün arkasında çalışmaya devam eder. Çoğu Linux dağıtımında <code>Ctrl-Alt-F1</code>'den <code>Ctrl-Alt-F6</code>'ya kadar basarak sanal terminal veya sanal konsol olarak adlandırılan bu oturumlara erişebilirsiniz. Bir sanal konsoldan diğerine geçmek için, <code>Alt-F1</code> ila <code>Alt-F6</code> arasındaki tuşlara basın. Çoğu sistemde <code>Alt-F7</code> ile grafik masaüstüne geri dönebilirsiniz.</p>
+                    <i class="icon-alert-circle"></i>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- / what is the shell? -->
+
+            <!-- navigation -->
+            <section id="section-2">
+              <h2 class="section-title-2 mb-2">Navigasyon <a data-scroll="" href="#section-2" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>Öğrenmemiz gereken ilk şey (nasıl yazılacağının yanı sıra) Linux sistemimizdeki dosya sisteminde nasıl gezileceğidir. Bu bölümde aşağıdaki komutları öğreneceksiniz:</p>
+              <ul>
+                <li><code>pwd</code> - Geçerli çalışma dizininin adını yazdır</li>
+                <li><code>cd</code> - Dizini değiştir</li>
+                <li><code>ls</code> - Dizin içeriğini listele</li>
+              </ul>
+              <h3 class="h4 mb-2">Dosya Sistemi Ağacını Anlamak</h3>
+              <p>Windows gibi, Linux işletim sistemide dosyalarını hiyerarşik dizin yapısı şeklinde düzenler. Bu, dosyaları ve diğer dizinleri içerebilen, ağaç benzeri bir dizin (bazen diğer sistemlerde klasörler olarak adlandırılır) düzeninde organize edildikleri anlamına gelir. Dosya sistemindeki ilk dizine kök dizin adı verilir. Kök dizin, daha fazla dosya ve alt dizin vb. içeren dosyalar ve alt dizinler içerir.</p>
+              <p>Her depolama aygıtı için ayrı bir dosya sistemi ağacına sahip olan Windows'tan farklı olarak, Linux gibi Unix benzeri sistemlerin, bilgisayara ne kadar sürücü veya depolama aygıtı takıldığına bakılmaksızın her zaman tek bir dosya sistemi ağacına sahip olduğunu unutmayın.</p>
+              <h3 class="h4 mb-2">Geçerli Çalışma Dizini</h3>
+              <p>Çoğumuz muhtemelen, Şekil 1'de görüldüğü gibi dosya sistemi ağacını temsil eden bir grafik dosya yöneticisine aşinayız. Ağaca genellikle yukarıdan aşağıya doğru bakıldığına dikkat edin, yani üstte kök bulunur ve dallar aşağıya doğru iner.</p>
+              <p>Ancak, komut satırında resim yoktur, bu nedenle dosya sistemi ağacında gezinmek için farklı bir şekilde düşünmemiz gerekir.</p>
+              <div class="text-center mb-2">
+                <img src="assets/images/file-system-tree.png" alt="Dosya sistemi ağacı">
+                <br>
+                <em>Şekil 1: Dosya yöneticisi tarafından<br> gösterilen dosya sistemi ağacı</em>
+              </div>
+              <p>Dosya sisteminin ağaç şeklinde bir labirent olduğunu ve bunun ortasında durduğunuzu hayal edin. Herhangi bir zamanda, dizinde bulunan dosyaları, üst dizine giden yolu ve alt dizinleri görebiliriz. Bulunduğumuz dizine geçerli çalışma dizini denir. Geçerli çalışma dizinini görüntülemek için, <code>pwd</code> (print working directory) komutunu kullanın.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ pwd
+/home/me</code></pre>
+              <p>Sisteme ilk giriş yaptığınızda (veya bir terminal emülatör oturumu başlattığımızda) mevcut çalışma dizini ana dizininize ayarlanır. Her kullanıcı hesabına kendi giriş dizini verilir ve normal bir kullanıcıya yazma izni verilen tek yer burasıdır.</p>
+              <h3 class="h4 mb-2">Dizin İçeriğini Listelemek</h3>
+              <p>Geçerli çalışma dizinindeki dosyaları ve dizinleri listelemek için <code>ls</code> komutunu kullanın.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls
+Desktop Documents Music Pictures Public Templates Videos</code></pre>
+              <p>Aslında, sadece geçerli çalışma dizinini değil, herhangi bir dizinin içeriğini listelemek için <code>ls</code> komutunu kullanabiliriz ve yapabileceği başka ilginç şeylerde var. Bir sonraki bölümde <code>ls</code> ile daha fazla zaman geçireceğiz.</p>
+              <h3 class="h4 mb-2">Geçerli Çalışma Dizinini Değiştirmek</h3>
+              <p>Çalışma dizininizi değiştirmek için <code>cd</code> komutunu kullanın. Bunu yapmak için, <code>cd</code> ve ardından istenen çalışma dizinin yolunu yazın. Yol, istediğimiz dizine ulaşmak için ağacın dalları boyunca gidilecek rotadır. Yol adlarını iki farklı şekilde belirtebiliriz; mutlak yol adları veya göreceli yol adları. İlk önce mutlak yollar ile ilgilenelim.</p>
+              <h4 class="h5 mb-2">Mutlak Yol Adları</h4>
+              <p>Mutlak bir yol adı kök dizin ile başlar ve istenen dizine veya dosyaya giden yol tamamlanıncaya kadar dalları takip eder. Örneğin, sistemimizde programlarımızın çoğunun kurulu olduğu bir dizin bulunur. Dizinin yol adı <code>/usr/bin</code>'dir. Bu, kök dizinde (yolun başındaki eğik çizgiyle temsil edilir) "bin" adında bir dizin içeren "usr" adında bir dizin olduğu anlamına gelir.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cd /usr/bin
+[me@linuxbox bin]$ pwd
+/usr/bin
+[me@linuxbox bin]$ ls
+...Listing of many, many files ...</code></pre>
+              <p>Şimdi mevcut çalışma dizinini <code>/usr/bin</code> olarak değiştirdiğimizi ve dosyalarla dolu olduğunu görebiliyoruz. Kabuk isteminin nasıl değiştiğine dikkat edin. Kolaylık olması amacıyla genellikle çalışma dizininin adını otomatik olarak gösterecek şekilde ayarlanır.</p>
+              <h4 class="h5 mb-2">Göreceli Yol Adları</h4>
+              <p>Dosya sistemi ağacındaki göreceli konumları göstermek için birkaç özel notasyon kullanılır. Bu özel notasyonlar <code>.</code> (nokta) ve <code>..</code> (nokta nokta) dır. <code>.</code> çalışma dizinini ve <code>..</code> ana dizini ifade eder. Çalışma dizinini tekrar <code>/usr/bin</code> olarak değiştirelim.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cd /usr/bin
+[me@linuxbox bin]$ pwd
+/usr/bin</code></pre>
+              <p>Şimdi çalışma dizinini <code>/usr/bin</code> öğesinin ana dizini olan <code>/usr</code> olarak değiştirmek istediğimizi varsayalım. Bunu iki farklı yolla yapabiliriz, mutlak bir yol adı kullanarak,</p>
+              <pre><code class="language-bash">[me@linuxbox bin]$ cd /usr
+[me@linuxbox usr]$ pwd
+/usr</code></pre>
+              <p>veya göreceli bir yol adı kullanarak.</p>
+              <pre><code class="language-bash">[me@linuxbox bin]$ cd ..
+[me@linuxbox usr]$ pwd
+/usr</code></pre>
+              <p>Aynı sonuç, iki farklı yöntem. Peki hangisini kullanmalıyız? En az yazmayı gerektireni!</p>
+              <p>Aynı şekilde, çalışma dizinini <code>/usr</code>'den <code>/usr/bin</code>'e değiştirebiliriz. Bunu mutlak bir yol adı kullanarak,</p>
+              <pre><code class="language-bash">[me@linuxbox usr]$ cd /usr/bin
+[me@linuxbox bin]$ pwd
+/usr/bin</code></pre>
+              <p>veya göreceli bir yol adı kullanarak yapabiliriz.</p>
+              <pre><code class="language-bash">[me@linuxbox usr]$ cd ./bin
+[me@linuxbox bin]$ pwd
+/usr/bin</code></pre>
+              <p>Burada belirtilmesi gereken önemli bir nokta var. Neredeyse tüm durumlarda <code>./</code> ihmal edilebilir. </p>
+              <pre><code class="language-bash">[me@linuxbox usr]$ cd bin</code></pre>
+              <p>Genel olarak, eğer bir şey için yol belirtmezsek, çalışma dizini kabul edilecektir.</p>
+              <h4 class="h5 mb-2">Bazı Faydalı Kısayollar</h4>
+              <p>Mevcut çalışma dizininin hızlı bir şekilde değiştirilebileceği bazı kullanışlı yollar:</p>
+              <ul>
+                <li><code>cd</code> Çalışma dizinini giriş dizini olarak değiştirir.</li>
+                <li><code>cd -</code> Çalışma dizinini önceki çalışma dizini olarak değiştirir.</li>
+                <li><code>cd ~user_name</code> Çalışma dizinini <em>user_name</em> giriş dizini olarak değiştirir. Örneğin, <code>cd ~bob</code>, dizini <em>bob</em> kullanıcısının giriş dizini olarak değiştirir.</li>
+              </ul>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-warning" role="alert">
+                    <h4>Dosya Adları ile İlgili Önemli Bilgiler</h4>
+                    <p>Dosyalar Linux sistemlerinde Windows gibi diğer sistemlere benzer şekilde adlandırılır, ancak bazı önemli farklılıklar vardır.</p>
+                    <ol>
+                      <li>Nokta karakteriyle başlayan dosya adları gizlenir. Bu sadece <code>ls</code> komutunun (<code>ls -a</code> kullanılmadıkça) onları listelemeyeceği anlamına geliyor. Hesabınız oluşturulduğunda, hesabınızla ilgili şeyleri yapılandırmak için ana dizininize birkaç gizli dosya yerleştirildi. Sonraki bölümde, ortamınızı nasıl özelleştirebileceğinizi görmek için bu dosyalardan bazılarına daha yakından bakacağız. Ayrıca, bazı uygulamalar yapılandırma ve ayar dosyalarını giriş dizininize gizli dosyalar olarak yerleştirir.</li>
+                      <li>Linux'ta Unix gibi dosya adları ve komutlar büyük/küçük harf duyarlıdır. “Dosya1” ve “dosya1” farklı dosyalar olarak değerlendirilir.</li>
+                      <li>Linux'ta diğer bazı işletim sistemleri gibi “dosya uzantısı” kavramı bulunmaz. Dosyaları istediğiniz gibi adlandırabilirsiniz. Bir dosyanın içeriği ve/veya amacı başka yollarla belirlenir. Unix benzeri işletim sistemleri dosyaların içeriğini/amacını belirlemek için dosya uzantılarını kullanmasa da, birçok uygulama kullanır.</li>
+                      <li>Linux, boşluk ve noktalama işaretleri içerebilen uzun dosya adlarını desteklese de, noktalama işaretlerini nokta, çizgi ve alt çizgi ile sınırlandırın. En önemlisi, dosya adlarında boşluk kullanmayın. Bir dosya adındaki kelimeler arasındaki boşlukları temsil etmesi için alt çizgi karakterini kullanın. Kendinize daha sonra teşekkür edeceksiniz.</li>
+                    </ol>
+                    <i class="icon-alert-circle"></i>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- / navigation -->
+
+            <!-- exploring the system -->
+            <section id="section-3">
+              <h2 class="section-title-2 mb-2">Sistemi Keşfetmek <a data-scroll="" href="#section-3" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>...</p>
+            </section>
+            <!-- / exploring the system -->
+
+            <!-- manipulating files and directories -->
+            <section id="section-4">
+              <h2 class="section-title-2 mb-2">Dosya ve Dizinleri Yönetmek <a data-scroll="" href="#section-4" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>...</p>
+            </section>
+            <!-- / manipulating files and directories -->
+
+            <!-- working with commands -->
+            <section id="section-5">
+              <h2 class="section-title-2 mb-2">Komutlarla Çalışmak <a data-scroll="" href="#section-5" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>...</p>
+            </section>
+            <!-- / working with commands -->
+
+            <!-- redirection -->
+            <section id="section-6">
+              <h2 class="section-title-2 mb-2">Yönlendirme <a data-scroll="" href="#section-6" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>...</p>
+            </section>
+            <!-- / redirection -->
+
+            <!-- seeing the world as the shell sees it -->
+            <section id="section-7">
+              <h2 class="section-title-2 mb-2">Dünyayı Kabuk Olarak Görmek <a data-scroll="" href="#section-7" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>...</p>
+            </section>
+            <!-- / seeing the world as the shell sees it -->
+
+            <!-- advanced keyboard tricks -->
+            <section id="section-8">
+              <h2 class="section-title-2 mb-2">Klavye Püf Noktaları <a data-scroll="" href="#section-8" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>...</p>
+            </section>
+            <!-- / advanced keyboard tricks -->
+
+            <!-- permissions -->
+            <section id="section-9">
+              <h2 class="section-title-2 mb-2">İzinler <a data-scroll="" href="#section-9" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>...</p>
+            </section>
+            <!-- / permissions -->
+
+            <!-- processes -->
+            <section id="section-10">
+              <h2 class="section-title-2 mb-2">Süreçler <a data-scroll="" href="#section-10" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
+              <p>...</p>
+            </section>
+            <!-- / processes -->
+
+          </article>
+          <!-- / content -->
+
+          <!-- scroll indicator -->
+          <div class="col-lg-1 d-none d-lg-block">
+            <div class="sticky sticky-with-header text-right">
+              <div id="pageProgress" class="page-progress" data-anchor-target="#content">
+                <div data-anchor-target="#content" data-top-top="height:0%;" data-bottom-bottom="height:100%;"></div>
+              </div>
+            </div>
+          </div>
+          <!-- / scroll indicator -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- go top -->
+    <div class="half">
+      <span class="half-bg bg-dark"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <div class="btn-frame">
+              <a data-scroll href="#top" class="btn btn-top btn-primary btn-ico btn-lg btn-rounded"><i class="icon-arrow-up2 fs-22"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / go top -->
+
+    <!-- footer -->
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row gutter-3">
+          <div class="col-12 col-md-2">
+            <a href=""><img src="assets/images/logo-white.svg" alt="Logo"></a>
+          </div>
+          <div class="col-12 col-md-6 text-white">
+            <p class="mb-5"><a href="http://linuxcommand.org/" target="blank" rel="nofollow">The Linux Command Line</a> kitabından çevirilerek hazırlanmıştır. Bu içerik <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="blank" rel="nofollow">Attribution-NonCommercial-NoDerivs 3.0 Unported</a> lisansı altındadır.</p>
+            <p>Yayıncı, <a href="http://www.netimoloji.com/" target="blank">Netimoloji</a></p>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 ml-auto text-md-right">
+            <div class="dropdown">
+              <button class="btn btn-inverted btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Türkçe
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="http://linuxcommand.org/" target="blank" rel="nofollow">English</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- / footer -->
+
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
