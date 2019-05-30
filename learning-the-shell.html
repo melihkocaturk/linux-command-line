@@ -217,12 +217,12 @@
             <section id="section-1">
               <h2 class="section-title-2 mb-2">Kabuk Nedir? <a data-scroll="" href="#section-1" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
               <p>Komut satırından bahsettiğimiz zaman, gerçekte kabuktan bahsediyoruz. Kabuk, klavye komutlarını alan ve bunları yürütmek için işletim sistemine ileten bir programdır. Neredeyse tüm Linux dağıtımları <code>bash</code> denilen bir kabuk programıyla beraber gelmektedir. "bash" adı, "Bourne Again Shell" in kısaltmasıdır ve <em>Steve Bourne</em> tarafından yazılmış orijinal Unix kabuk programı olan <code>sh</code> için geliştirilmiş bir alternatiftir.</p>
-              <h3 class="h4 mb-2">Terminal Emülatörleri</h3>
+              <h3 class="h4 mb-2">Terminal emülatörleri</h3>
               <p>Bir grafik kullanıcı arayüzü (GUI) kullanırken, kabukla etkileşime girmek için terminal emülatörü adı verilen başka bir programa ihtiyacınız vardır. KDE <code>konsole</code> ve GNOME <code>gnome-terminal</code> kullanır, ancak büyük olasılıkla menümüzde basitçe "terminal" olarak adlandırılmıştır. Linux için kullanılabilecek çok sayıda başka terminal emülatörü mevcuttur, ancak hepsi temelde aynı şeyi yapar; kabuğa erişim izni verir.</p>
-              <h3 class="h4 mb-2">İlk Tuş Vuruşlarınızı Yapın</h3>
+              <h3 class="h4 mb-2">İlk tuş vuruşlarınız</h3>
               <p>Öyleyse başlayalım. Terminal emülatörünü başlatın! Açıldığında şöyle bir şey görmelisiniz:</p>
               <pre><code class="language-bash">[me@linuxbox ~]$</code></pre>
-              <p>Buna kabuk istemi adı verilir ve kabuk giriş kabul etmeye hazır olduğunda görünür. Dağıtıma bağlı olarak görünüşü biraz değişse de, tipik olarak <code>username@machinename</code> içerecektir, bunu mevcut çalışma dizininiz ve dolar işareti takip eder.</p>
+              <p>Buna kabuk istemi adı verilir ve kabuk giriş kabul etmeye hazır olduğunda görünür. Dağıtıma bağlı olarak görünüşü biraz değişse de, tipik olarak <code>username@machinename</code> içerecektir, bunu geçerli çalışma dizininiz ve dolar işareti takip eder.</p>
               <div class="row">
                 <div class="col">
                   <div class="alert alert-info" role="alert">
@@ -237,9 +237,9 @@
               <p>Kabuk bu komutun anlamsız olduğunu söyler ve bize bir şans daha verir.</p>
               <pre><code class="language-bash">bash: kaekfjaeifj: command not found
 [me@linuxbox ~]$</code></pre>
-              <h4 class="h5 mb-2">Komut Geçmişi</h4>
+              <h4 class="h5 mb-2">Komut geçmişi</h4>
               <p>Yukarı ok tuşuna basarsanız, önceki komutun <code>kaekfjaeifj</code> komut isteminden sonra tekrar göründüğünü göreceğiz. Buna komut geçmişi denir. Çoğu Linux dağıtımı, varsayılan olarak son 1000 komutu hatırlar. Aşağı ok tuşuna basarsanız, önceki komut kaybolur.</p>
-              <h4 class="h5 mb-2">İmleç Hareketi</h4>
+              <h4 class="h5 mb-2">İmleç hareketi</h4>
               <p>Yukarı ok tuşuna tekrar basarak önceki komutu geri çağırın. Sol ve sağ ok tuşlarını denerseniz, imleci komut satırının herhangi bir yerinde nasıl konumlandıracağımızı göreceksiniz. Bu komutları düzenlemeyi kolaylaştırır.</p>
               <div class="row">
                 <div class="col">
@@ -251,7 +251,7 @@
                   </div>
                 </div>
               </div>
-              <h3 class="h4 mb-2">Bazı Basit Komutları Deneyin</h3>
+              <h3 class="h4 mb-2">Bazı basit komutları deneyin</h3>
               <p>Artık terminal emülatörüne metin girmeyi öğrendiğimize göre, birkaç basit komut deneyelim. Şimdiki saati ve tarihi gösteren <code>date</code> komutuyla başlayalım.</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ date
 Thu Mar 8 15:09:41 EST 2018</code></pre>
@@ -276,13 +276,13 @@ tmpfs       256856    0         256856    0%    /dev/shm</code></pre>
 Mem:  513712        503976  9736    0       5312    122916
 -/+ buffers/cache:  375748  137964
 Swap:               104712  947536</code></pre>
-              <h3 class="h4 mb-2">Terminal Oturumunu Sonlandırmak</h3>
+              <h3 class="h4 mb-2">Terminal oturumunu sonlandırmak</h3>
               <p>Bir terminal oturumunu, emülatör penceresini kapatarak, kabuk isteminde <code>exit</code> komutunu girerek veya <code>Ctrl-d</code> tuşlarına basarak sonlandırabiliriz.</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ exit</code></pre>
               <div class="row">
                 <div class="col">
                   <div class="alert alert-warning" role="alert">
-                    <h4>Perdenin Arkasındaki Konsol</h4>
+                    <h4>Perde arkasındaki konsol</h4>
                     <p>Çalışan bir terminal emülatörü olmasa bile, birkaç terminal oturumu grafik masaüstünün arkasında çalışmaya devam eder. Çoğu Linux dağıtımında <code>Ctrl-Alt-F1</code>'den <code>Ctrl-Alt-F6</code>'ya kadar basarak sanal terminal veya sanal konsol olarak adlandırılan bu oturumlara erişebilirsiniz. Bir sanal konsoldan diğerine geçmek için, <code>Alt-F1</code> ila <code>Alt-F6</code> arasındaki tuşlara basın. Çoğu sistemde <code>Alt-F7</code> ile grafik masaüstüne geri dönebilirsiniz.</p>
                     <i class="icon-alert-circle"></i>
                   </div>
@@ -300,10 +300,10 @@ Swap:               104712  947536</code></pre>
                 <li><code>cd</code> - Dizini değiştir</li>
                 <li><code>ls</code> - Dizin içeriğini listele</li>
               </ul>
-              <h3 class="h4 mb-2">Dosya Sistemi Ağacını Anlamak</h3>
+              <h3 class="h4 mb-2">Dosya sistemi ağacını anlamak</h3>
               <p>Windows gibi, Linux işletim sistemide dosyalarını hiyerarşik dizin yapısı şeklinde düzenler. Bu, dosyaları ve diğer dizinleri içerebilen, ağaç benzeri bir dizin (bazen diğer sistemlerde klasörler olarak adlandırılır) düzeninde organize edildikleri anlamına gelir. Dosya sistemindeki ilk dizine kök dizin adı verilir. Kök dizin, daha fazla dosya ve alt dizin vb. içeren dosyalar ve alt dizinler içerir.</p>
               <p>Her depolama aygıtı için ayrı bir dosya sistemi ağacına sahip olan Windows'tan farklı olarak, Linux gibi Unix benzeri sistemlerin, bilgisayara ne kadar sürücü veya depolama aygıtı takıldığına bakılmaksızın her zaman tek bir dosya sistemi ağacına sahip olduğunu unutmayın.</p>
-              <h3 class="h4 mb-2">Geçerli Çalışma Dizini</h3>
+              <h3 class="h4 mb-2">Geçerli çalışma dizini</h3>
               <p>Çoğumuz muhtemelen, Şekil 1'de görüldüğü gibi dosya sistemi ağacını temsil eden bir grafik dosya yöneticisine aşinayız. Ağaca genellikle yukarıdan aşağıya doğru bakıldığına dikkat edin, yani üstte kök bulunur ve dallar aşağıya doğru iner.</p>
               <p>Ancak, komut satırında resim yoktur, bu nedenle dosya sistemi ağacında gezinmek için farklı bir şekilde düşünmemiz gerekir.</p>
               <div class="text-center mb-2">
@@ -314,23 +314,23 @@ Swap:               104712  947536</code></pre>
               <p>Dosya sisteminin ağaç şeklinde bir labirent olduğunu ve bunun ortasında durduğunuzu hayal edin. Herhangi bir zamanda, dizinde bulunan dosyaları, üst dizine giden yolu ve alt dizinleri görebiliriz. Bulunduğumuz dizine geçerli çalışma dizini denir. Geçerli çalışma dizinini görüntülemek için, <code>pwd</code> (print working directory) komutunu kullanın.</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ pwd
 /home/me</code></pre>
-              <p>Sisteme ilk giriş yaptığınızda (veya bir terminal emülatör oturumu başlattığımızda) mevcut çalışma dizini ana dizininize ayarlanır. Her kullanıcı hesabına kendi giriş dizini verilir ve normal bir kullanıcıya yazma izni verilen tek yer burasıdır.</p>
-              <h3 class="h4 mb-2">Dizin İçeriğini Listelemek</h3>
+              <p>Sisteme ilk giriş yaptığınızda (veya bir terminal emülatör oturumu başlattığımızda) geçerli çalışma dizini ana dizininize ayarlanır. Her kullanıcı hesabına kendi giriş dizini verilir ve normal bir kullanıcıya yazma izni verilen tek yer burasıdır.</p>
+              <h3 class="h4 mb-2">Dizin içeriğini listelemek</h3>
               <p>Geçerli çalışma dizinindeki dosyaları ve dizinleri listelemek için <code>ls</code> komutunu kullanın.</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ ls
 Desktop Documents Music Pictures Public Templates Videos</code></pre>
               <p>Aslında, sadece geçerli çalışma dizinini değil, herhangi bir dizinin içeriğini listelemek için <code>ls</code> komutunu kullanabiliriz ve yapabileceği başka ilginç şeylerde var. Bir sonraki bölümde <code>ls</code> ile daha fazla zaman geçireceğiz.</p>
-              <h3 class="h4 mb-2">Geçerli Çalışma Dizinini Değiştirmek</h3>
+              <h3 class="h4 mb-2">Geçerli çalışma dizinini değiştirmek</h3>
               <p>Çalışma dizininizi değiştirmek için <code>cd</code> komutunu kullanın. Bunu yapmak için, <code>cd</code> ve ardından istenen çalışma dizinin yolunu yazın. Yol, istediğimiz dizine ulaşmak için ağacın dalları boyunca gidilecek rotadır. Yol adlarını iki farklı şekilde belirtebiliriz; mutlak yol adları veya göreceli yol adları. İlk önce mutlak yollar ile ilgilenelim.</p>
-              <h4 class="h5 mb-2">Mutlak Yol Adları</h4>
+              <h4 class="h5 mb-2">Mutlak yol adları</h4>
               <p>Mutlak bir yol adı kök dizin ile başlar ve istenen dizine veya dosyaya giden yol tamamlanıncaya kadar dalları takip eder. Örneğin, sistemimizde programlarımızın çoğunun kurulu olduğu bir dizin bulunur. Dizinin yol adı <code>/usr/bin</code>'dir. Bu, kök dizinde (yolun başındaki eğik çizgiyle temsil edilir) "bin" adında bir dizin içeren "usr" adında bir dizin olduğu anlamına gelir.</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ cd /usr/bin
 [me@linuxbox bin]$ pwd
 /usr/bin
 [me@linuxbox bin]$ ls
 ...Listing of many, many files ...</code></pre>
-              <p>Şimdi mevcut çalışma dizinini <code>/usr/bin</code> olarak değiştirdiğimizi ve dosyalarla dolu olduğunu görebiliyoruz. Kabuk isteminin nasıl değiştiğine dikkat edin. Kolaylık olması amacıyla genellikle çalışma dizininin adını otomatik olarak gösterecek şekilde ayarlanır.</p>
-              <h4 class="h5 mb-2">Göreceli Yol Adları</h4>
+              <p>Şimdi geçerli çalışma dizinini <code>/usr/bin</code> olarak değiştirdiğimizi ve dosyalarla dolu olduğunu görebiliyoruz. Kabuk isteminin nasıl değiştiğine dikkat edin. Kolaylık olması amacıyla genellikle çalışma dizininin adını otomatik olarak gösterecek şekilde ayarlanır.</p>
+              <h4 class="h5 mb-2">Göreceli yol adları</h4>
               <p>Dosya sistemi ağacındaki göreceli konumları göstermek için birkaç özel notasyon kullanılır. Bu özel notasyonlar <code>.</code> (nokta) ve <code>..</code> (nokta nokta) dır. <code>.</code> çalışma dizinini ve <code>..</code> ana dizini ifade eder. Çalışma dizinini tekrar <code>/usr/bin</code> olarak değiştirelim.</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ cd /usr/bin
 [me@linuxbox bin]$ pwd
@@ -355,8 +355,8 @@ Desktop Documents Music Pictures Public Templates Videos</code></pre>
               <p>Burada belirtilmesi gereken önemli bir nokta var. Neredeyse tüm durumlarda <code>./</code> ihmal edilebilir. </p>
               <pre><code class="language-bash">[me@linuxbox usr]$ cd bin</code></pre>
               <p>Genel olarak, eğer bir şey için yol belirtmezsek, çalışma dizini kabul edilecektir.</p>
-              <h4 class="h5 mb-2">Bazı Faydalı Kısayollar</h4>
-              <p>Mevcut çalışma dizininin hızlı bir şekilde değiştirilebileceği bazı kullanışlı yollar:</p>
+              <h4 class="h5 mb-2">Bazı faydalı kısayollar</h4>
+              <p>Geçerli çalışma dizininin hızlı bir şekilde değiştirilebileceği bazı kullanışlı yollar:</p>
               <ul>
                 <li><code>cd</code> Çalışma dizinini giriş dizini olarak değiştirir.</li>
                 <li><code>cd -</code> Çalışma dizinini önceki çalışma dizini olarak değiştirir.</li>
@@ -365,7 +365,7 @@ Desktop Documents Music Pictures Public Templates Videos</code></pre>
               <div class="row">
                 <div class="col">
                   <div class="alert alert-warning" role="alert">
-                    <h4>Dosya Adları ile İlgili Önemli Bilgiler</h4>
+                    <h4>Dosya adları ile ilgili önemli bilgiler</h4>
                     <p>Dosyalar Linux sistemlerinde Windows gibi diğer sistemlere benzer şekilde adlandırılır, ancak bazı önemli farklılıklar vardır.</p>
                     <ol>
                       <li>Nokta karakteriyle başlayan dosya adları gizlenir. Bu sadece <code>ls</code> komutunun (<code>ls -a</code> kullanılmadıkça) onları listelemeyeceği anlamına geliyor. Hesabınız oluşturulduğunda, hesabınızla ilgili şeyleri yapılandırmak için ana dizininize birkaç gizli dosya yerleştirildi. Sonraki bölümde, ortamınızı nasıl özelleştirebileceğinizi görmek için bu dosyalardan bazılarına daha yakından bakacağız. Ayrıca, bazı uygulamalar yapılandırma ve ayar dosyalarını giriş dizininize gizli dosyalar olarak yerleştirir.</li>
@@ -383,14 +383,426 @@ Desktop Documents Music Pictures Public Templates Videos</code></pre>
             <!-- exploring the system -->
             <section id="section-3">
               <h2 class="section-title-2 mb-2">Sistemi Keşfetmek <a data-scroll="" href="#section-3" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
-              <p>...</p>
+              <p>Artık dosya sisteminde nasıl dolaşılacağını bildiğinize göre, Linux'ta rehberli bir tur atmanın zamanı geldi. Ancak başlamadan önce, yol boyunca yararlı olacak birkaç komut öğreneceğiz.</p>
+              <ul>
+                <li><code>ls</code> - Dizin içeriğini listele</li>
+                <li><code>file</code> - Dosya türünü belirle</li>
+                <li><code>less</code> - Dosya içeriğini görüntüle</li>
+              </ul>
+              <h3 class="h4 mb-2">"ls" ile biraz eğlenelim</h3>
+              <p><code>ls</code> komutu muhtemelen en çok kullanılan komuttur. Bu komutla, dizin içeriğini görebilir ve çeşitli önemli dosya ve dizin niteliklerini belirleyebilirsiniz. Geçerli çalışma dizininde bulunan dosyaların ve alt dizinlerin listesini almak için <code>ls</code> komutunu girin:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls
+Desktop  Documents  Music  Pictures  Public  Templates  Videos</code></pre>
+              <p>Geçerli çalışma dizininin yanında, listelenecek dizini de belirtebilirsiniz:</p>
+              <pre><code class="language-bash">me@linuxbox ~]$ ls /usr
+bin  games  include  lib  local  sbin  share  src</code></pre>
+              <p>Birden fazla dizinde belirlenebilir. Aşağıdaki örnekte, hem kullanıcının giriş dizini (<code>~</code> karakteri ile sembolize edilmiştir) hem de <code>/usr</code> dizini listeleniyor.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls ~ /usr
+/home/me:
+Desktop  Documents  Music  Pictures  Public  Templates  Videos
+
+/usr:
+bin  games  include  lib  local  sbin  share  src</code></pre>
+              <p>Daha fazla detay için çıktının biçimini de değiştirebilirsiniz.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls -l
+total 56
+drwxrwxr-x 2 me me 4096 2017-10-26 17:20 Desktop
+drwxrwxr-x 2 me me 4096 2017-10-26 17:20 Documents
+drwxrwxr-x 2 me me 4096 2017-10-26 17:20 Music
+drwxrwxr-x 2 me me 4096 2017-10-26 17:20 Pictures
+drwxrwxr-x 2 me me 4096 2017-10-26 17:20 Public
+drwxrwxr-x 2 me me 4096 2017-10-26 17:20 Templates
+drwxrwxr-x 2 me me 4096 2017-10-26 17:20 Videos</code></pre>
+              <p><code>-l</code> seçeneğini ekleyerek çıktı biçimini uzun format olarak değiştirdik.</p>
+              <h4 class="h5 mb-2">Seçenekler ve parametreler</h4>
+              <p>Bu bizi komutların nasıl çalıştığı konusunda çok önemli bir noktaya getiriyor. Komutları genellikle davranışlarını değiştiren bir veya daha fazla seçenek, ardından da bir veya daha fazla parametre izler. Yani çoğu komut şuna benzer:</p>
+              <pre><code class="language-bash">command -options arguments</code></pre>
+              <p>Çoğu komut, bir çizgi ile başlayan tek bir karakterden oluşan seçenekleri kullanır, örneğin <code>-l</code>. Bununla birlikte, GNU Projesi'nden olanlar da dahil olmak üzere birçok komut, iki çizgi ile başlayan bir kelimeden oluşan uzun seçenekleri de desteklemektedir. Ayrıca, birçok komut birden fazla kısa seçeneğin birbirine eklenebilmesini sağlar. Aşağıdaki örnekte, <code>ls</code> komutuna, uzun formatlı çıktı üretmek için <code>l</code> ve sonucu dosyanın değiştirilme zamanına göre sıralamak için <code>t</code> seçeneği verilmiştir.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls -lt</code></pre>
+              <p>Sıralamayı tersine çevirmek için <code>--reverse</code> ekleyin.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls -lt --reverse</code></pre>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-info" role="alert">
+                    <h4>Not</h4>
+                    <p>Linux'taki dosya adları gibi komut seçeneklerinin de büyük/küçük harf duyarlı olduğunu unutmayın.</p>
+                    <i class="icon-info-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <p><code>ls</code> komutu çok sayıda olası seçeneğe sahiptir. En yaygın olanlar aşağıdaki tabloda listelenmiştir.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Seçenek</th>
+                        <th scope="col">Uzun Seçenek</th>
+                        <th scope="col">Açıklama</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">-a</th>
+                        <td>--all</td>
+                        <td>Normalde listelenmeyen dosyalar da dahil (adı nokta ile başlayan gizli dosyalar) tüm dosyaları listeler.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-A</th>
+                        <td>--almost-all</td>
+                        <td>Geçerli dizini (.) ve üst dizini (..) listelememesi dışında yukarıdaki <code>-a</code> seçeneğine benzer.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-d</th>
+                        <td>--directory</td>
+                        <td>Normalde, bir dizin belirtildiğinde, <code>ls</code> dizinin kendisini değil dizinin içeriğini listeler. Dizin içeriği yerine dizin ayrıntılarını görmek için <code>-l</code> seçeneğiyle birlikte bu seçeneği kullanın.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-F</th>
+                        <td>--classify</td>
+                        <td>Bu seçenek listelenen her ismin sonuna bir gösterge karakteri ekleyecektir. Örneğin, bir dizin için eğik çizgi (/) eklenir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-h</th>
+                        <td>--human-readable</td>
+                        <td>Uzun formatlı listelerde, dosya boyutlarını bayt yerine insan tarafından okunabilir biçimde görüntüler.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-l</th>
+                        <td></td>
+                        <td>Sonuçları uzun formatta görüntüler.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-r</th>
+                        <td>--reverse</td>
+                        <td>Sonuçları ters sıralar. Normalde, <code>ls</code> sonuçları artan alfabetik sıraya göre görüntüler.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-S</th>
+                        <td></td>
+                        <td>Sonuçları dosya boyutuna göre sıralar.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-t</th>
+                        <td></td>
+                        <td>Değiştirme zamanına göre sıralar.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <h4 class="h5 mb-2">Uzun formata uzun bir bakış</h4>
+              <p>Daha önce gördüğümüz gibi <code>-l</code> seçeneği sonuçları uzun formatta görüntüler. Bu format çok sayıda faydalı bilgi içerir. Ubuntu sisteminden <code>Examples</code> dizini:</p>
+              <pre><code class="language-bash">-rw-r--r-- 1 root root 3576296  2017-04-03 11:05 Experience ubuntu.ogg
+-rw-r--r-- 1 root root 1186219  2017-04-03 11:05 kubuntu-leaflet.png
+-rw-r--r-- 1 root root 47584    2017-04-03 11:05 logo-Edubuntu.png
+-rw-r--r-- 1 root root 44355    2017-04-03 11:05 logo-Kubuntu.png
+-rw-r--r-- 1 root root 34391    2017-04-03 11:05 logo-Ubuntu.png
+-rw-r--r-- 1 root root 32059    2017-04-03 11:05 oo-cd-cover.odf
+-rw-r--r-- 1 root root 159744   2017-04-03 11:05 oo-derivatives.doc
+-rw-r--r-- 1 root root 27837    2017-04-03 11:05 oo-maxwell.odt
+-rw-r--r-- 1 root root 98816    2017-04-03 11:05 oo-trig.xls
+-rw-r--r-- 1 root root 453764   2017-04-03 11:05 oo-welcome.odt
+-rw-r--r-- 1 root root 358374   2017-04-03 11:05 ubuntu Sax.ogg</code></pre>
+              <p>Aşağıdaki tablo bize dosyalardan biriyle ilgili farklı alanlar ve anlamlarını sunmaktadır.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Alan</th>
+                        <th scope="col">Anlamı</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">-rw-r--r--</th>
+                        <td>Dosyaya erişim haklarını gösterir. İlk karakter dosya türünü belirtir, çizgi normal bir dosya anlamına gelirken <code>d</code> karakteri bir dizini gösterir. Sonraki üç karakter dosya sahibi, sonraki üç dosya grubunun üyeleri ve son üçü de herkezin erişim hakları içindir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Dosyanın sabit bağlantı sayısını gösterir. Bu bölümün ilerleyen kısımlarındaki "Sembolik Bağlantılar" ve "Sabit Bağlantılar" bölümlerine bakabilirsiniz.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">root</th>
+                        <td>Dosyanın sahibinin kullanıcı adı.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">root</th>
+                        <td>Dosyaya sahip olan grubun adı.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">32059</th>
+                        <td>Dosyanın bayt olarak boyutu.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2007-04-03 11:05</th>
+                        <td>Dosyanın son değiştirildiği tarih ve saat.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">oo-cd-cover.odf</th>
+                        <td>Dosyanın adı.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <h3 class="h4 mb-2">"file" ile dosya türünü belirlemek</h3>
+              <p>Sistemi keşfederken hangi dosyaları içerdiğini bilmek faydalı olacaktır. Bir dosyanın türünü belirlemek için <code>file</code> komutunu kullanacağız. Daha önce de anlatıldığı gibi, Linux'taki dosya adları dosya içeriğini yansıtmayabilir. <em>Picture.jpg</em> gibi bir dosya adının normalde JPEG sıkıştırılmış resim içermesi beklenirken, Linux'ta böyle olması gerekmez. <code>file</code> komutunu şu şekilde çağırabiliriz:</p>
+              <pre><code class="language-bash">file filename</code></pre>
+              <p><code>file</code> komutu çağırıldığında, dosya içeriğinin kısa bir açıklamasını ekrana basacaktır. Örneğin:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ file picture.jpg
+picture.jpg: JPEG image data, JFIF standard 1.01</code></pre>
+              <p>Birçok dosya türü vardır. Aslında, Linux gibi Unix benzeri işletim sistemlerinin ortak fikirlerden biri "her şey bir dosya" dır. Devam ettikçe, bu ifadenin ne kadar doğru olduğunu göreceğiz.</p>
+              <p>Sistemimizdeki dosyaların çoğu tanıdık gelse de - örneğin MP3 ve JPEG - daha az belirgin olan ve garip görünen birkaç türde vardır.</p>
+              <h3 class="h4 mb-2">Dosya içeriğini "less" ile görüntülemek</h3>
+              <p><code>less</code> komutu, metin dosyalarını görüntülemek için kullanılan bir programdır. Linux sistemimizde, insan tarafından okunabilen metinler içeren birçok dosya bulunur. <code>less</code> bu metinleri incelemek için uygun bir yol sağlar.</p>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-warning" role="alert">
+                    <h4>"Text" nedir?</h4>
+                    <p>Bilgisayardaki bilgileri temsil etmenin birçok yolu vardır. Tüm yöntemler, bilgi ile onu temsil etmek için kullanılacak bazı sayılar arasında ilişki tanımlamayı içerir. Sonuçta, bilgisayarlar, yalnızca sayıları anlar ve tüm veriler sayısal gösterime dönüştürülür.</p>
+                    <p>Bu temsil sistemlerinden bazıları çok karmaşıktır (sıkıştırılmış video dosyaları gibi), bazıları ise oldukça basittir. En eski ve en basitlerinden biride ASCII metinlerdir. ASCII ("As-Key" olarak telaffuz edilir) "American Standard Code for Information Interchange" kısaltmasıdır. İlk olarak <em>Teletype</em> makinelerinde klavyedeki karakterleri sayılarla eşleştirmek için kullanılmış basit bir kodlama şemasıdır.</p>
+                    <p>Text (Metin), karakterlerin sayılarla bire bir eşleştirilmesidir. Metnin 50 karakteri 50 veri baytına çevrilir. Metinlerin yalnızca karakter ve sayıların basit bir şekilde eşleştirilmesinden ibaret olduğunu anlamak önemlidir. <em>Microsoft Word</em> veya <em>LibreOffice Writer</em> ile oluşturulan bir döküman, kelime işlemci ile oluşturulan dökümandan farklıdır. Bu dosyalar, basit ASCII metinlerin tersine, yapı ve biçimlendirmeyi tanımlamak için kullanılan birçok metin dışı öğe içerir. Düz ASCII metin dosyaları yalnızca karakterlerin kendilerini ve sekmeler, satır başı gibi birkaç basit kontrol kodunu içerir.</p>
+                    <p>Linux'ta birçok dosya metin biçiminde saklanır ve metin dosyalarıyla çalışan birçok Linux aracı bulunur. Windows bile bu formatın önemini kabul eder. İyi bilinen <em>NOTEPAD.EXE</em> programı, düz ASCII metin dosyaları için bir editördür.</p>
+                    <i class="icon-alert-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <p>Neden metin dosyalarını incelemek isteyelim? Çünkü sistem ayarlarını içeren (konfigürasyon dosyaları olarak adlandırılan) dosyaların çoğu bu formatta saklanır ve bunları okumak sistemin nasıl çalıştığı hakkında bize fikir verir. Ek olarak, sistemin kullandığı programların bazıları (script olarak adlandırılır) bu biçimde saklanır. Daha sonraki bölümlerde, sistem ayarlarını değiştirmek ve kendi scriptlerimizi yazmak için metin dosyalarını nasıl düzenleyeceğimizi öğreneceğiz, ancak şimdilik sadece içeriklerine bakalım.</p>
+              <p><code>less</code> komut bu şekilde kullanılır:</p>
+              <pre><code class="language-bash">less filename</code></pre>
+              <p>Başladıktan sonra, <code>less</code> programı bir metin dosyasında ileri ve geri gitmemize izin verir. Örneğin, sistemin tüm kullanıcı hesaplarını tanımlayan dosyayı incelemek için aşağıdaki komutu girin:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ less /etc/passwd</code></pre>
+              <p>Dosya bir sayfadan uzunsa, aşağı ve yukarı kaydırabilirsiniz. <code>less</code>'den çıkmak için <code>q</code> tuşuna basın. Aşağıdaki tabloda, <code>less</code> tarafından kullanılan en yaygın klavye komutları listelenmiştir.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Komut</th>
+                        <th scope="col">Eylem</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Page Up veya b</th>
+                        <td>Bir sayfa geri kaydır</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Page Down veya space</th>
+                        <td>Bir sayfa ileri kaydır</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Yukarı ok</th>
+                        <td>Bir satır yukarı kaydır</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Aşağı ok</th>
+                        <td>Bir satır aşağı kaydır</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">G</th>
+                        <td>Metin dosyasının sonuna git</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1G veya g</th>
+                        <td>Metin dosyasının başına git</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/characters</th>
+                        <td>İleriye doğru arama yap</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">n</th>
+                        <td>Bir önceki bulunan satıra geri dön</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">h</th>
+                        <td>Yardım ekranını görüntüle</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">q</th>
+                        <td><code>less</code>'ten çık</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-warning" role="alert">
+                    <h4>Az daha çoktur</h4>
+                    <p><code>less</code> programı, <code>more</code> olarak adlandırılan daha önceki bir Unix programının geliştirilmiş halidir. <code>less</code> adı, modernist mimarların ve tasarımcıların sloganı olan "less is more" ifadesindeki bir kelime oyunudur. </p>
+                    <p><code>less</code>, uzun metinlerin sayfalar halinde kolayca görüntülenmesini sağlayan programlar olan "pagers" sınıfına girer. <code>more</code> programı sadece sayfalarda ileriye gidebilse de, <code>less</code> programı hem ileri hem de geri sayfalamayı mümkün kılar ve birçok başka özelliğe de sahiptir.</p>
+                    <i class="icon-alert-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <h3 class="h4 mb-2">Rehberli bir tur atalım</h3>
+              <p>Bir Linux sistemindeki dosya sistemi düzeni, diğer Unix benzeri sistemlerde bulananlara çok benzer. Tasarım aslında "Linux Filesystem Hierarchy Standard" adı verilen yayınlanmış bir standartta belirtilmiştir. Tüm Linux dağıtımları bu standarda tam olarak uymaz, ancak çoğu oldukça yakındır.</p>
+              <p>Ardından, Linux'ün nasıl çalıştığını görmek için dosya sisteminin etrafında dolaşacağız. Bu bize navigasyon becerilerimizi uygulama şansı verecek. Keşfedeceğimiz şeylerden biri, dosyaların çoğunun insan tarafından okunabilen düz metin olduğudur. Turumuza başlamadan önce, aşağıdakileri deneyin:</p>
+              <ul>
+                <li><code>cd</code> ile bir dizine girin</li>
+                <li>Dizin içeriğini <code>ls -l</code> ile listeleyin</li>
+                <li>İlginç bir dosya görürseniz, içeriğini <code>file</code> ile belirleyin</li>
+                <li>Metin gibi görünüyorsa, <code>less</code> ile görüntülemeyi deneyin</li>
+                <li>Yanlışlıkla metin olmayan bir dosyayı görüntülemeye çalışırsanız ve terminal penceresi karışırsa, <code>reset</code> komutunu girerek kurtarabilirsiniz.</li>
+              </ul>
+              <p>Etrafta dolaşırken birşeylere bakmaktan korkmayın. Normal kullanıcılar işleri batıramazlar. Bu sistem yöneticisinin işidir! Bir komut bir şeyden şikayet ediyorsa, başka bir şeye geçin. Etrafa bakarken biraz zaman geçirin. Unutmayın, Linux'ta sır yoktur!</p>
+              <p>Aşağıdaki tabloda keşfedebildiğimiz dizinlerden birkaçı listelenmektedir. Linux dağıtımımıza bağlı olarak bazı küçük farklılıklar olabilir.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Dizin</th>
+                        <th scope="col">Açıklama</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">/</th>
+                        <td>Kök dizini. Her şeyin başladığı yer.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/bin</th>
+                        <td>Sistemin önyüklemesi ve çalışması için gerekli ikili (binary) dosyaları (programlar) içerir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/boot</th>
+                        <td>
+                          <p>Linux çekirdeğini, başlangıçtaki RAM disk görüntüsünü (önyükleme sırasında gereken sürücüler için) ve önyükleyiciyi içerir.</p>
+                          <p>İlginç dosyalar:</p>
+                          <ul>
+                            <li><code>/boot/grub/grub.conf</code> veya <code>menu.lst</code>, önyükleme yükleyicisini yapılandırmak için kullanılır.</li>
+                            <li><code>/boot/vmlinuz</code> (veya benzeri bir şey), Linux çekirdeği</li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/dev</th>
+                        <td>Aygıt düğümlerini içeren özel bir dizindir. “Her şey bir dosyadır” ifadesi aygıtlar için de geçerlidir. Çekirdeğin anladığı tüm aygıtların listesi burada tutuluyor.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/etc</th>
+                        <td>
+                          <p>Sistem genelindeki tüm yapılandırma dosyalarını içerir. Ayrıca, sistem hizmetlerinin her birini önyükleme sırasında başlatan bir kabuk komut dosyası koleksiyonu içerir. Bu dizindeki her şey okunabilir metin olmalıdır.</p>
+                          <p><code>/etc</code> içindeki her şey ilginç olsa da, işte tüm zamanların favorileri:</p>
+                          <ul>
+                            <li><code>/etc/crontab</code>, otomatikleştirilmiş işlerin ne zaman çalışacağını tanımlayan bir dosya.</li>
+                            <li><code>/etc/fstab</code>, depolama aygıtları tablosu ve bunlarla ilgili bağlantı noktaları.</li>
+                            <li><code>/etc/passwd</code>, kullanıcı hesaplarının listesi.</li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/home</th>
+                        <td>Normal yapılandırmalarda, her kullanıcıya <code>/home</code> içinde bir dizin verilir. Sıradan kullanıcılar sadece kendi dizinlerinde yazma iznine sahiptir. Bu sınırlama sistemi hatalı kullanıcı faaliyetlerinden korur.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/lib</th>
+                        <td>Çekirdek sistem programları tarafından kullanılan ve paylaşılan kütüphane dosyalarını içerir. Bunlar, Windows'taki dinamik bağlantı kütüphanelerine (DLL) benzer.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/lost+found</th>
+                        <td>Ext4 gibi bir Linux dosya sistemi kullanan her biçimlendirilmiş bölüm veya cihaz bu dizine sahip olacaktır. Bir dosya sistemi bozulmasından kısmi kurtarma durumunda kullanılır. Sistemimizde gerçekten kötü bir şey olmadıkça, bu dizin boş kalacaktır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/media</th>
+                         <td>Modern Linux sistemlerinde <code>/media</code> dizini, otomatik olarak monte edilen çıkarılabilir medya (USB sürücüler, CD-ROM'lar vb.) için bağlantı noktaları içerir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/mnt</th>
+                        <td>Eski Linux sistemlerinde <code>/mnt</code> dizini, manuel olarak monte edilen çıkarılabilir cihazlar için bağlantı noktaları içerir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/opt</th>
+                        <td><code>/opt</code> dizini "isteğe bağlı" yazılım - daha çok sisteme kurulabilecek ticari yazılım ürünleri - kurmak için kullanılır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/proc</th>
+                        <td><code>/proc</code> dizini özeldir. Sabit sürücüde depolanan dosyalar gibi gerçek bir dosya sistemi değildir. Aksine, Linux çekirdeği tarafından tutulan sanal bir dosya sistemidir. İçerdiği “dosyalar” okunabilir durumdadır ve çekirdeğin içini görmemizi sağlar.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/root</th>
+                        <td>Bu <code>root</code> hesabının giriş dizinidir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/sbin</th>
+                        <td>Bu dizin "sistem" ikili (binary) dosyalarını içerir. Bunlar, genellikle süper kullanıcı için ayrılmış hayati sistem görevlerini yerine getiren programlardır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/tmp</th>
+                        <td><code>/tmp</code> dizini çeşitli programlar tarafından oluşturulan geçici dosyaları saklar. Bazı yapılandırmalar sistem yeniden başlatıldığında bu dizinin boşaltılmasına neden olur.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/usr</th>
+                        <td><code>/usr</code> dizin ağacı büyük olasılıkla Linux sisteminin en büyüğüdür. Tüm programları ve normal kullanıcılar tarafından kullanılan destek dosyalarını içerir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/usr/bin</th>
+                        <td><code>/usr/bin</code>, Linux dağıtımı tarafından yüklenen çalıştırılabilir programları içerir. Bu dizinin binlerce programa sahip olması olağandışı değildir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/usr/lib</th>
+                        <td><code>/usr/bin</code> içindeki programlar için paylaşılan kütüphaneler.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/usr/local</th>
+                        <td><code>/usr/local</code> ağacı, dağıtıma dahil edilmeyen ancak sistem geleninde kullanıma yönelik programların kurulu olduğu yerdir. Kaynak koddan derlenen programlar normalde <code>/usr/local/bin</code> dizinine kurulur. Yeni kurulan bir Linux sisteminde, bu ağaç vardır, ancak sistem yöneticisi içine bir şey koyana kadar boş kalır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/usr/sbin</th>
+                        <td>Daha fazla sistem yönetimi programı içerir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/usr/share</th>
+                        <td><code>/usr/bin</code> içindeki programlar tarafından kullanılan tüm paylaşılan verileri (varsayılan yapılandırma dosyaları, simgeler, ekran arka planları, ses dosyaları vb.) içerir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/usr/share/doc</th>
+                        <td>Sistemde kurulu paketlerin çoğu bir tür dokümantasyon içerecektir. <code>/usr/share/doc</code> içinde, paketlere göre organize edilmiş dokümantasyon dosyalarını bulacağız.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/var</th>
+                        <td><code>/tmp</code> ve <code>/home</code> dışında, şu ana kadar baktığımız dizinler nispeten statik kalır, yani içerikleri değişmez. <code>/var</code> dizin ağacı, değişmesi muhtemel verilerin - çeşitli veritabanları, biriktirme (spool) dosyaları, kullanıcı e-postaları vb. - saklandığı yerdir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">/var/log</th>
+                        <td>Günlük dosyalarını ve çeşitli sistem faaliyet kayıtlarını içerir. Bunlar önemlidir ve zaman zaman izlenmelidir. En faydalı olanlar <code>/var/log/messages</code> ve <code>/var/log/syslog</code>'dur. Güvenlik nedeniyle bazı sistemlerde sadece süper kullanıcı günlük dosyalarını görüntüleyebilir.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <h3 class="h4 mb-2">Sembolik Bağlantılar</h3>
+              <p>Etrafınıza bakarken şöyle bir dizin listesi (örneğin, <code>/lib</code>) görmeniz muhtemeldir:</p>
+              <pre><code class="language-bash">lrwxrwxrwx 1 root root 11 2007-08-11 07:34 libc.so.6 -> libc-2.6.so</code></pre>
+              <p>Girdinin ilk harfinin "l" olduğuna ve iki dosya adına sahip olduğuna dikkat edin. Bu, sembolik link (soft link veya symlink olarak da bilinir) adı verilen özel bir dosya türüdür. Unix benzeri çoğu sistemde, birden fazla isimle referans verilen bir dosyaya sahip olmak mümkündür. Bunun değeri ilk bakışta görünmese de, gerçekten faydalı bir özellik.</p>
+              <p>Şu senaryoyu hayal edin: Bir program "foo" adlı bir dosyada bulunan bir tür paylaşımlı kaynağın kullanılmasını gerektirir, ancak sıkça sürümü değişmektedir. Sürüm numarasını dosya adına eklemek mantıklı olacaktır, böylelikle yönetici veya ilgili diğer taraflar hangi sürümün kurulu olduğunu görebilir. Bu yeni bir soruna neden olur. Paylaşılan kaynağın adını değiştirirsek, onu kullanabilecek her programı izlemeli ve kaynağın her yeni sürümü yüklendiğinde yeni bir kaynak adı arayacak şekilde değiştirmeliyiz. Bu kulağa hiçte eğlenceli gelmiyor.</p>
+              <p>İşte sembolik bağlantıların günü kurtardığı yer. Diyelim ki "foo-2.6" dosya adını taşıyan "foo" nun 2.6 sürümünü yüklediğimizi ve sonra "foo-2.6" ya işaret eden basitçe "foo" olarak adlandırılan sembolik bir bağlantı oluşturduğumuzu varsayalım. Bu, bir program “foo” dosyasını açtığında, aslında “foo-2.6” dosyasını açıyor demektir. Şimdi herkes mutlu. "foo" yu kullanan programlar onu bulabilir ve gerçekte hangi versiyonun kurulu olduğunu görebiliriz. "foo-2.7" ye yükseltme zamanı geldiğinde dosyayı sistemimize ekledik, "foo" sembolik bağlantısını silip yeni sürüme işaret eden yeni bir tane oluşturduk. Bu yalnızca sürüm yükseltme sorununu çözmez, aynı zamanda her iki sürümü de makinemizde tutmamızı sağlar. "foo-2.7" de bir hata olduğunu (ah bu geliştiriciler!) ve eski sürüme geri dönmeniz gerektiğini hayal edin. Yine, sadece yeni sürüme işaret eden sembolik bağlantıyı siler ve eski sürüme işaret eden yeni bir sembolik bağlantı oluştururuz.</p>
+              <p>Bu bölümün başındaki dizin listesi (Fedora sisteminin <code>/lib</code> dizininden) <code>libc.so.6</code> adlı sembolik bağlantıyı gösterir. Bu, <code>libc.so.6</code>'yı arayan programların aslında <code>libc-2.6.so</code> dosyasını alacağı anlamına gelir. Bir sonraki bölümde sembolik bağların nasıl oluşturulacağını öğreneceğiz.</p>
+              <h3 class="h4 mb-2">Sabit Bağlantılar</h3>
+              <p>Bağlantılar konusunda, sabit bağlantı adı verilen ikinci bir bağlantı türü olduğunu belirtmemiz gerekir. Sabit bağlantılar da dosyaların birden fazla ada sahip olmasına izin verir, ancak bunu farklı bir şekilde yaparlar. Bir sonraki bölümde sembolik ve sabit bağlantılar arasındaki farklar hakkında daha fazla konuşacağız.</p>
             </section>
             <!-- / exploring the system -->
 
             <!-- manipulating files and directories -->
             <section id="section-4">
               <h2 class="section-title-2 mb-2">Dosya ve Dizinleri Yönetmek <a data-scroll="" href="#section-4" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
-              <p>...</p>
+              <p>Artık gerçek bir iş için hazırsınız! Bu bölümde aşağıdaki komutları öğreneceksiniz:</p>
+              <ul>
+                <li><code>cp</code> - Dosya ve dizinleri kopyala</li>
+                <li><code>mv</code> - Dosyaları ve dizinleri taşı/yeniden adlandır</li>
+                <li><code>mkdir</code> - Dizin oluştur</li>
+                <li><code>rm</code> - Dosyaları ve dizinleri kaldır</li>
+                <li><code>ln</code> - Sabit ve sembolik bağlantılar oluştur</li>
+              </ul>
+              <p>Bu beş komut en sık kullanılan Linux komutları arasındadır. Hem dosyaları hem de dizinleri düzenlemek için kullanılırlar.</p>
+              <p>Açık olmak gerekirse, bu komutların yerine getirdiği görevlerin bir kısmı grafik dosya yöneticisi ile daha kolay yapılabilir. Dosya yöneticisi ile bir dosyayı bir dizinden diğerine sürükleyip bırakabilir, dosyaları kesip yapıştırabilir, dosyaları silebiliriz vb. Peki neden bu eski komut satırı programlarını kullanıyorsunuz?</p>
+              <p></p>
+              <pre><code class="language-bash">cp -u *.html destination</code></pre>
             </section>
             <!-- / manipulating files and directories -->
 
