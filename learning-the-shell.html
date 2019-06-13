@@ -211,7 +211,7 @@
 
           <!-- content -->
           <article id="content" class="col-lg-7">
-            <h1 class="h2 font-weight-light mb-4">Bölüm 1 - <b>Kabuk</b></h1>
+            <h1 class="h2 font-weight-light mb-4">Bölüm 1 - <strong>Kabuk</strong></h1>
 
             <!-- what is the shell? -->
             <section id="section-1">
@@ -776,14 +776,14 @@ picture.jpg: JPEG image data, JFIF standard 1.01</code></pre>
                   </table>
                 </div>
               </div>
-              <h3 class="h4 mb-2">Sembolik Bağlantılar</h3>
+              <h3 class="h4 mb-2">Sembolik bağlantılar</h3>
               <p>Etrafınıza bakarken şöyle bir dizin listesi (örneğin, <code>/lib</code>) görmeniz muhtemeldir:</p>
               <pre><code class="language-bash">lrwxrwxrwx 1 root root 11 2007-08-11 07:34 libc.so.6 -> libc-2.6.so</code></pre>
               <p>Girdinin ilk harfinin "l" olduğuna ve iki dosya adına sahip olduğuna dikkat edin. Bu, sembolik link (soft link veya symlink olarak da bilinir) adı verilen özel bir dosya türüdür. Unix benzeri çoğu sistemde, birden fazla isimle referans verilen bir dosyaya sahip olmak mümkündür. Bunun değeri ilk bakışta görünmese de, gerçekten faydalı bir özellik.</p>
               <p>Şu senaryoyu hayal edin: Bir program "foo" adlı bir dosyada bulunan bir tür paylaşımlı kaynağın kullanılmasını gerektirir, ancak sıkça sürümü değişmektedir. Sürüm numarasını dosya adına eklemek mantıklı olacaktır, böylelikle yönetici veya ilgili diğer taraflar hangi sürümün kurulu olduğunu görebilir. Bu yeni bir soruna neden olur. Paylaşılan kaynağın adını değiştirirsek, onu kullanabilecek her programı izlemeli ve kaynağın her yeni sürümü yüklendiğinde yeni bir kaynak adı arayacak şekilde değiştirmeliyiz. Bu kulağa hiçte eğlenceli gelmiyor.</p>
               <p>İşte sembolik bağlantıların günü kurtardığı yer. Diyelim ki "foo-2.6" dosya adını taşıyan "foo" nun 2.6 sürümünü yüklediğimizi ve sonra "foo-2.6" ya işaret eden basitçe "foo" olarak adlandırılan sembolik bir bağlantı oluşturduğumuzu varsayalım. Bu, bir program “foo” dosyasını açtığında, aslında “foo-2.6” dosyasını açıyor demektir. Şimdi herkes mutlu. "foo" yu kullanan programlar onu bulabilir ve gerçekte hangi versiyonun kurulu olduğunu görebiliriz. "foo-2.7" ye yükseltme zamanı geldiğinde dosyayı sistemimize ekledik, "foo" sembolik bağlantısını silip yeni sürüme işaret eden yeni bir tane oluşturduk. Bu yalnızca sürüm yükseltme sorununu çözmez, aynı zamanda her iki sürümü de makinemizde tutmamızı sağlar. "foo-2.7" de bir hata olduğunu (ah bu geliştiriciler!) ve eski sürüme geri dönmeniz gerektiğini hayal edin. Yine, sadece yeni sürüme işaret eden sembolik bağlantıyı siler ve eski sürüme işaret eden yeni bir sembolik bağlantı oluştururuz.</p>
               <p>Bu bölümün başındaki dizin listesi (Fedora sisteminin <code>/lib</code> dizininden) <code>libc.so.6</code> adlı sembolik bağlantıyı gösterir. Bu, <code>libc.so.6</code>'yı arayan programların aslında <code>libc-2.6.so</code> dosyasını alacağı anlamına gelir. Bir sonraki bölümde sembolik bağların nasıl oluşturulacağını öğreneceğiz.</p>
-              <h3 class="h4 mb-2">Sabit Bağlantılar</h3>
+              <h3 class="h4 mb-2">Sabit bağlantılar</h3>
               <p>Bağlantılar konusunda, sabit bağlantı adı verilen ikinci bir bağlantı türü olduğunu belirtmemiz gerekir. Sabit bağlantılar da dosyaların birden fazla ada sahip olmasına izin verir, ancak bunu farklı bir şekilde yaparlar. Bir sonraki bölümde sembolik ve sabit bağlantılar arasındaki farklar hakkında daha fazla konuşacağız.</p>
             </section>
             <!-- / exploring the system -->
@@ -800,9 +800,551 @@ picture.jpg: JPEG image data, JFIF standard 1.01</code></pre>
                 <li><code>ln</code> - Sabit ve sembolik bağlantılar oluştur</li>
               </ul>
               <p>Bu beş komut en sık kullanılan Linux komutları arasındadır. Hem dosyaları hem de dizinleri düzenlemek için kullanılırlar.</p>
-              <p>Açık olmak gerekirse, bu komutların yerine getirdiği görevlerin bir kısmı grafik dosya yöneticisi ile daha kolay yapılabilir. Dosya yöneticisi ile bir dosyayı bir dizinden diğerine sürükleyip bırakabilir, dosyaları kesip yapıştırabilir, dosyaları silebiliriz vb. Peki neden bu eski komut satırı programlarını kullanıyorsunuz?</p>
-              <p></p>
+              <p>Açık olmak gerekirse, bu komutların yerine getirdiği görevlerin bir kısmı grafik dosya yöneticisi ile daha kolay yapılabilir. Dosya yöneticisi ile bir dosyayı bir dizinden diğerine sürükleyip bırakabilir, dosyaları kesip yapıştırabilir ve silebiliriz vb. Peki neden bu eski komut satırı programlarını kullanıyoruz?</p>
+              <p>Cevap güç ve esnekliktir. Grafik dosya yöneticisi ile basit dosya manipülasyonları yapmak kolay olmakla birlikte, komut satırı programlarıyla karmaşık işler daha kolay olabilir. Örneğin, yalnızca hedef dizinde bulunmayan veya hedef dizindeki sürümlerden daha yeni olan tüm HTML dosyalarını bir dizinden diğerine nasıl kopyalayabiliriz? Dosya yöneticisi ile oldukça zor ama komut satırı ile oldukça kolaydır.</p>
               <pre><code class="language-bash">cp -u *.html destination</code></pre>
+              <h3 class="h4 mb-2">Joker karakterler</h3>
+              <p>Komutlarımızı kullanmaya başlamadan önce, bu komutları bu kadar güçlü kılan bir kabuk özelliği hakkında konuşmamız gerekiyor. Kabuk dosya adlarını çok fazla kullandığından, dosya adlarını hızlı bir şekilde belirlememize yardımcı olacak özel karakterler sunar. Bu özel karakterlere joker karakterler denir. Joker karakterleri kullanmak (aynı zamanda globbing olarak da bilinir) karakter kalıplarını temel alan dosya adlarını seçmemize izin verir. Aşağıdaki tablo joker karakterleri ve neyi seçtiklerini listeler.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Joker Karakter</th>
+                        <th scope="col">Anlamı</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">*</th>
+                        <td>Herhangi bir karakterle eşleşir</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">?</th>
+                        <td>Herhangi bir tek karakterle eşleşir</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[characters]</th>
+                        <td>Karakter setinin üyesi olan herhangi bir karakterle eşleşir</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[!characters]</th>
+                        <td>Karakter setinin üyesi olmayan herhangi bir karakterle eşleşir</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[[:class:]]</th>
+                        <td>Belirtilen sınıfın üyesi olan herhangi bir karakterle eşleşir</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p>Aşağıdaki tablo en yaygın kullanılan karakter sınıflarını listeler.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Karakter Sınıfı</th>
+                        <th scope="col">Anlamı</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">[:alnum:]</th>
+                        <td>Alfanümerik herhangi bir karakterle eşleşir</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[:alpha:]</th>
+                        <td>Herhangi bir alfabetik karakterle eşleşir</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[:digit:]</th>
+                        <td>Rakamlarla eşleşir</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[:lower:]</th>
+                        <td>Küçük harflerle eşleşir</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[:upper:]</th>
+                        <td>Büyük harflerle eşleşir</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p>Joker karakterleri kullanmak, dosya adları için karmaşık seçim kriterleri oluşturmayı mümkün kılar. Aşağıdaki tablo, bazı şablon örneklerini ve ne ile eşleştiklerini göstermektedir.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Şablon</th>
+                        <th scope="col">Eşleşme</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">*</th>
+                        <td>Tüm dosyalar</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">g*</th>
+                        <td>"g" ile başlayan herhangi bir dosya</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">b*.txt</th>
+                        <td>"b" ile başlayan, ardından herhangi bir karakterle devam eden ve ".txt" ile biten herhangi bir dosya</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Data???</th>
+                        <td>"Data" ile başlayan ve ardından tam üç karakterle devam eden herhangi bir dosya</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[abc]*</th>
+                        <td>"a", a "b" veya a "c" ile başlayan herhangi bir dosya</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">BACKUP.[0-9][0-9][0-9]</th>
+                        <td>"BACKUP." İle başlayan ve ardından tam olarak üç rakamla devam eden herhangi bir dosya</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[[:upper:]]*</th>
+                        <td>Büyük harfle başlayan herhangi bir dosya</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">[![:digit:]]*</th>
+                        <td>Rakamla başlamayan herhangi bir dosya</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">*[[:lower:]123]</th>
+                        <td>Küçük harf veya "1", "2" veya "3" rakamlarıyla biten herhangi bir dosya</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p>Joker karakterler, dosya adlarını argüman olarak kabul eden herhangi bir komutla beraber kullanılabilir, ancak "Dünyayı Kabuk Olarak Görmek" başlıklı bölümde daha detaylı inceleyeceğiz.</p>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-warning" role="alert">
+                    <h4>Karakter aralıkları</h4>
+                    <p>Başka bir Unix benzeri ortamdan geliyorsanız veya bu konuda kitap okuyorsanız, <code>[A-Z]</code> ve <code>[a-z]</code> karakter aralığı notasyonlarıyla karşılaşmış olabilirsiniz. Bunlar geleneksel Unix notasyonlarıdır ve Linux'un eski sürümlerinde de çalışır. Hala kullanılabilirler, ancak dikkatli olmalısınız çünkü doğru bir şekilde yapılandırılmadıkça beklenen sonuçları vermeyeceklerdir. Şimdilik kullanmaktan kaçınmalı ve bunun yerine karakter sınıflarını kullanmalısınız.</p>
+                    <i class="icon-alert-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <h4 class="h5 mb-2">Joker karakterler GUI'de çalışabilir</h4>
+              <p>Joker karakterler, yalnızca komut satırında çok sık kullanıldığı için değil, aynı zamanda bazı grafiksel dosya yöneticileri tarafından da desteklendikleri için değerlidir.</p>
+              <ul>
+                <li><em>Nautilus</em>'ta (GNOME'un dosya yöneticisi), "Edit/Select Pattern" menüsünü kullanarak dosyaları seçebilirsiniz. Joker karakterler ile şablonunuzu girdiğinizde, görüntülediğiniz dizinde eşleşen dosyalar seçim için vurgulanacaktır.</li>
+                <li><em>Dolphin</em> ve <em>Konqueror</em>'un bazı sürümlerinde (KDE'nin dosya yöneticileri) joker karakterleri doğrudan konum çubuğuna girebilirsiniz. Örneğin, <code>/usr/bin</code> dizininde küçük harfle "u" ile başlayan tüm dosyaları görmek istiyorsanız, konum çubuğuna "/usr/bin/u*" girin.</li>
+              </ul>
+              <p>Başlangıçta komut satırı arayüzünde bulunan birçok fikir grafik arayüzüne de uygulanır. Linux masaüstünü bu kadar güçlü yapan şeylerden biride budur.</p>
+              <h3 class="h4 mb-2">mkdir - Dizin oluşturmak</h3>
+              <p><code>mkdir</code> komutu, dizin oluşturmak için kullanılır. Şu şekilde çalışır:</p>
+              <pre><code class="language-bash">mkdir directory...</code></pre>
+              <p><strong>Notasyona ilişkin bir not:</strong> Komut tanımındaki argümanı takip eden üç nokta (yukarıdaki gibi), argümanın tekrarlanabileceği anlamına gelir, bu nedenle aşağıdaki komut:</p>
+              <pre><code class="language-bash">mkdir dir1</code></pre>
+              <p><code>dir1</code> adında tek bir dizin oluştururken;</p>
+              <pre><code class="language-bash">mkdir dir1 dir2 dir3</code></pre>
+              <p><code>dir1</code>, <code>dir2</code> ve <code>dir3</code> adlı üç dizin oluşturur.</p>
+              <h3 class="h4 mb-2">cp - Dosya ve dizinleri kopyalamak</h3>
+              <p><code>cp</code> komutu dosyaları veya dizinleri kopyalar. İki farklı şekilde kullanılabilir:</p>
+              <pre><code class="language-bash">cp item1 item2</code></pre>
+              <p>tek bir dosya veya dizin olan <code>item1</code>'i dosya veya dizin olan <code>item2</code>'ye kopyalar ve aşağıdaki:</p>
+              <pre><code class="language-bash">cp item... directory</code></pre>
+              <p>birden fazla öğeyi (dosya veya dizin) bir dizine kopyalar.</p>
+              <h4 class="h5 mb-2">Faydalı seçenekler ve örnekler</h4>
+              <p>Aşağıdaki tablo <code>cp</code> için yaygın olarak kullanılan seçeneklerin bazılarını listeler.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Seçenek</th>
+                        <th scope="col">Uzun Seçenek</th>
+                        <th scope="col">Açıklama</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">-a</th>
+                        <td>--archive</td>
+                        <td>Dosya ve dizinleri tüm nitelikleri (sahiplik ve izinler dahil) ile beraber kopyalar. Normalde kopya, kopyayı gerçekleştiren kullanıcının varsayılan niteliklerini alır. "İzinler" bölümünde dosya izinlerine göz atacağız.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-i</th>
+                        <td>--interactive</td>
+                        <td>Mevcut bir dosyanın üzerine yazmadan önce kullanıcıdan onay ister. Bu seçenek belirtilmezse, <code>cp</code> sessizce (hiçbir uyarı olmadan) dosyaların üzerine yazacaktır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-r</th>
+                        <td>--recursive</td>
+                        <td>Dizinleri ve içeriklerini rekürsif kopyalar. Dizinleri kopyalarken bu seçenek (veya -a seçeneği) gereklidir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-u</th>
+                        <td>--update</td>
+                        <td>Dosyaları bir dizinden diğerine kopyalarken, hedef dizinde olmayan veya varolan ilgili dosyalardan daha yeni olan dosyaları kopyalar. Çok sayıda dosya kopyalanırken, kopyalanması gerekmeyen dosyaları atladığı için kullanışlıdır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-v</th>
+                        <td>--verbose</td>
+                        <td>Kopyalama yapılırken bilgi mesajlarını görüntüler.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <h4 class="h5 mb-2"><strong>cp</strong> örnekleri</h4>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="col-lg-4">Komut</th>
+                        <th scope="col" class="col-lg-8">Sonuçlar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">cp file1 file2</th>
+                        <td><em>file1</em>'i, <em>file2</em>'ye kopyalar. <strong>Eğer <em>file2</em> mevcutsa, <em>file1</em>'in içeriği <em>file2</em>'nin üzerine yazılır.</strong> <em>file2</em> mevcut değilse, oluşturulur.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">cp -i file1 file2</th>
+                        <td>Önceki komutla aynıdır, ancak <em>file2</em> mevcutsa, üzerine yazılmadan önce kullanıcı uyarılır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">cp file1 file2 dir1</th>
+                        <td><em>file1</em> ve <em>file2</em>'yi <em>dir1</em> dizinine kopyalar. <em>dir1</em> dizini mevcut olmalıdır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">cp dir1/* dir2</th>
+                        <td>Joker karakter kullanarak, <em>dir1</em> içindeki tüm dosyaları <em>dir2</em> dizinine kopyalar. <em>dir2</em> dizini mevcut olmalıdır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">cp -r dir1 dir2</th>
+                        <td><em>dir1</em> dizininin içeriğini <em>dir2</em> dizinine kopyalar. Eğer <em>dir2</em> dizini mevcut değilse, yaratılır ve kopyaladıktan sonra, <em>dir1</em> dizini ile aynı içeriğe sahip olacaktır. Eğer <em>dir2</em> dizini mevcutsa, <em>dir1</em> dizini (ve içeriği) <em>dir2</em>'ye kopyalanır.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <h3 class="h4 mb-2">mv - Dosyaları taşımak ve yeniden adlandırmak</h3>
+              <p><code>mv</code> komutu, nasıl kullanıldığına bağlı olarak hem dosya taşıma hem de yeniden adlandırma işlemini gerçekleştirir. Her iki durumda da, işlemden sonra orjinal dosya artık mevcut değildir. <code>mv</code> aşağıda gösterildiği gibi <code>cp</code> ile aynı şekilde kullanılır:</p>
+              <pre><code class="language-bash">mv item1 item2</code></pre>
+              <p>dosya veya dizini <code>item1</code>'den <code>item2</code>'ye taşımak veya yeniden adlandırmak için veya:</p>
+              <pre><code class="language-bash">mv item... directory</code></pre>
+              <p>bir veya daha fazla öğeyi bir dizinden diğerine taşımak için.</p>
+              <h4 class="h5 mb-2">Faydalı seçenekler ve örnekler</h4>
+              <p><code>mv</code>, aşağıdaki tabloda açıklanan <code>cp</code> ile benzer seçeneklerin çoğunu paylaşır.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Seçenek</th>
+                        <th scope="col">Uzun Seçenek</th>
+                        <th scope="col">Açıklama</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">-i</th>
+                        <td>--interactive</td>
+                        <td>Mevcut bir dosyanın üzerine yazmadan önce kullanıcıdan onay ister. Bu seçenek belirtilmezse, <code>mv</code> sessizce (hiçbir uyarı olmadan) dosyaların üzerine yazacaktır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-u</th>
+                        <td>--update</td>
+                        <td>Dosyaları bir dizinden diğerine taşırken, hedef dizinde olmayan veya varolan ilgili dosyalardan daha yeni olan dosyaları taşır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-v</th>
+                        <td>--verbose</td>
+                        <td>Dosyalar taşınırken bilgi mesajlarını görüntüler.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p>Aşağıdaki tablo, <code>mv</code> kullanımına ilişkin bazı örnekler sunmaktadır.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="col-lg-4">Komut</th>
+                        <th scope="col" class="col-lg-8">Sonuçlar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">mv file1 file2</th>
+                        <td><em>file1</em>'i, <em>file2</em>'ye taşır. <strong>Eğer <em>file2</em> mevcutsa, <em>file1</em>'in içeriği <em>file2</em>'nin üzerine yazılır.</strong> <em>file2</em> mevcut değilse, oluşturulur. Her iki durumda da, <em>file1</em> silinecektir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">mv -i file1 file2</th>
+                        <td>Önceki komutla aynıdır, ancak <em>file2</em> mevcutsa, üzerine yazılmadan önce kullanıcı uyarılır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">mv file1 file2 dir1</th>
+                        <td><em>file1</em> ve <em>file2</em>'yi <em>dir1</em> dizinine taşır. <em>dir1</em> dizini mevcut olmalıdır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">mv dir1 dir2</th>
+                        <td>Eğer <em>dir2</em> dizini mevcut değilse, <em>dir2</em> dizinini yaratır, <em>dir1</em> dizininin içeriğini <em>dir2</em> içine taşır ve <em>dir1</em> dizinini siler. Eğer <em>dir2</em> dizini mevcutsa, <em>dir1</em> dizinini (ve içeriğini) <em>dir2</em> dizinine taşır.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <h3 class="h4 mb-2">rm - Dosya ve dizinleri kaldırmak</h3>
+              <p><code>rm</code> komutu, aşağıda gösterildiği gibi dosyaları ve dizinleri kaldırmak (silmek) için kullanılır:</p>
+              <pre><code class="language-bash">rm item...</code></pre>
+              <p><code>item</code> bir veya daha fazla dosya veya dizindir.</p>
+              <h4 class="h5 mb-2">Faydalı seçenekler ve örnekler</h4>
+              <p><p>Aşağıdaki tablo <code>rm</code> için yaygın olarak kullanılan seçeneklerin bazılarını listeler.</p></p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col">Seçenek</th>
+                        <th scope="col">Uzun Seçenek</th>
+                        <th scope="col">Açıklama</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">-i</th>
+                        <td>--interactive</td>
+                        <td>Mevcut bir dosyayı silmeden önce kullanıcıdan onay ister. Bu seçenek belirtilmezse, <code>rm</code> sessizce (hiçbir uyarı olmadan) dosyaları silecektir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-r</th>
+                        <td>--recursive</td>
+                        <td>Dizinleri ve içeriklerini rekürsif siler. Bu seçenek, silinen bir dizinin alt dizinleri varsa, onları da silmek anlamına gelir. Bir dizini komple silmek için bu seçenek belirtilmelidir.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-f</th>
+                        <td>--force</td>
+                        <td>Var olmayan dosyaları yoksay ve kullanıcıdan onay isteme. Bu <code>--interactive</code> seçeneğini geçersiz kılar.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">-v</th>
+                        <td>--verbose</td>
+                        <td>Dosyalar silinirken bilgi mesajlarını görüntüler.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p>Aşağıdaki tablo, <code>rm</code> kullanımına ilişkin bazı örnekler sunmaktadır.</p>
+              <div class="row">
+                <div class="col">
+                  <table class="table table-striped boxed">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="col-lg-4">Komut</th>
+                        <th scope="col" class="col-lg-8">Sonuçlar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">rm file1</th>
+                        <td><em>file1</em>'i sessizce siler.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">rm -i file1</th>
+                        <td>Silme işlemi yapılmadan önce kullanıcıdan onay istenmesi dışında önceki komutla aynıdır.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">rm -r file1 dir1</th>
+                        <td><em>file1</em>, <em>dir1</em> ve içeriğini siler.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">rm -rf file1 dir1</th>
+                        <td>Önceki komutla aynıdır, ancak <em>file1</em> veya <em>dir1</em> yoksa, <em>rm</em> sessizce devam eder.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-warning" role="alert">
+                    <h4><strong>rm</strong> kullanırken dikkatli olun!</h4>
+                    <p>Linux gibi Unix benzeri işletim sistemlerinde geri alma komutu yoktur. <code>rm</code> ile bir şey sildiğinizde, yokolur. Linux zeki olduğunuzu ve ne yaptığınızı bildiğinizi varsayar.</p>
+                    <p>Joker karakterleri kullanırken özellikle dikkatli olun. Bu klasik örneği düşünün. Bir dizindeki HTML uzantılı dosyaları silmek istediğinizi varsayalım:</p>
+                    <pre><code class="language-bash">rm *.html</code></pre>
+                    <p>Bu ifade doğru, ancak yanlışlıkla <code>*</code> ve <code>.html</code> arasına bir boşluk koyarsanız:</p>
+                    <pre><code class="language-bash">rm * .html</code></pre>
+                    <p><code>rm</code> komutu dizindeki tüm dosyaları siler ve daha sonra <code>.html</code> adında dosya bulamadığı için şikayet eder.</p>
+                    <p><strong>İşte size yararlı bir ipucu:</strong> <code>rm</code> ile joker karakter kullandığınızda (yazımınızı dikkatlice kontrol etmenin yanı sıra!), önce <code>ls</code> ile test edin. Bu, silinecek dosyaları görmenizi sağlayacaktır. Ardından komutu geri çağırmak için yukarı ok tuşuna basın ve <code>ls</code>'yi <code>rm</code> ile değiştirin.</p>
+                    <i class="icon-alert-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <h3 class="h4 mb-2">ln - Bağlantı oluşturmak</h3>
+              <p><code>ln</code> komutu, sabit veya sembolik bağlantılar oluşturmak için kullanılır. Aşağıdaki sabit bir bağlantı oluşturur:</p>
+              <pre><code class="language-bash">ln file link</code></pre>
+              <p>ve aşağıdaki sembolik bir bağlantı oluşturur:</p>
+              <pre><code class="language-bash">ln -s item link</code></pre>
+              <p><code>item</code> ifadesi bir dosya veya bir dizindir.</p>
+              <h4 class="h5 mb-2">Sabit bağlantılar</h4>
+              <p>Sabit bağlantılar - daha modern olan sembolik bağlantılara kıyasla - bağlantı oluşturmanın orjinal Unix yoludur. Varsayılan olarak, her dosyanın dosyaya adını veren tek bir sabit bağlantısı vardır. Sabit bağlantı oluşturduğumuzda,  dosya için ek bir dizin girişi oluştururuz. Sabit bağlantıların iki önemli sınırlaması vardır:</p>
+              <ol>
+                <li>Sabit bağlantı, kendi dosya sisteminin dışındaki bir dosyaya başvuruda bulunamaz (Sabit bağlantı ile dosya aynı disk bölümünde olmalıdır).</li>
+                <li>Bir dizin için sabit bağlantı oluşturulamaz.</li>
+              </ol>
+              <p>Sabit bağlantı dosyanın kendisinden ayırt edilemez. Sembolik bağlantıdan farklı olarak, sabit bağlantı içeren bir dizini listelediğimizde bağlantı hakkında herhangi bir özel işaret göremeyiz. Bir sabit bağlantı silindiğinde, bağlantı kaldırılır ancak dosyanın tüm bağlantıları silinene kadar dosyanın içeriği varolmaya devam eder (yani disk alanı iade edilmez).</p>
+              <p>Sabit bağlantıların farkında olmak önemlidir, çünkü zaman zaman onlarla karşılaşabilirsiniz, ancak modern uygulama daha sonra ele alacağımız sembolik bağlantıları tercih eder.</p>
+              <h4 class="h5 mb-2">Sembolik bağlantılar</h4>
+              <p>Sabit bağlantının sınırlarının üstesinden gelmek için sembolik bağlantılar oluşturulmuştur. Sembolik bağlantılar, başvurulan dosya veya dizine bir metin işaretçisi içeren özel bir dosya türü oluşturarak çalışır. Bu bakımdan, Windows kısayolları ile aynı şekilde çalışırlar.</p>
+              <p>Sembolik bağlantının işaret ettiği dosya ve sembolik bağlantının kendisi büyük ölçüde birbirinden ayırt edilemez. Örneğin, sembolik linke bir şey yazarsak, başvurulan dosyaya yazılır. Ancak sembolik bir bağlantıyı sildiğimizde, dosyanın kendisi değil yalnızca bağlantı silinir. Dosya sembolik bağlantıdan önce silinirse, bağlantı var olmaya devam edecek fakat hiçbir şeye işaret etmeyecektir. Bu durumda, bağlantının koptuğu söylenir. Birçok uygulamada <code>ls</code> komutu, kırık bağlantıları ortaya çıkarmak için kırmızı gibi ayırt edici bir renkte görüntüler.</p>
+              <p>Bağlantı kavramı kafa karıştırıcı görünebilir, ancak buna fazla takılmayın. Tüm bunları deneyeceğiz ve umarım herşey netleşecek.</p>
+              <h3 class="h4 mb-2">Bir oyun alanı oluşturalım</h3>
+              <p>Bazı gerçek dosya manipülasyonları yapacağımızdan komutlarla "oynamak" için güvenli bir alan oluşturalım. Öncelikle çalışabileceğimiz bir dizine ihtiyacımız var. <code>home</code> dizini altında bir tane oluşturacağız ve buna <code>playground</code> diyeceğiz.</p>
+              <h4 class="h5 mb-2">Dizin oluşturmak</h4>
+              <p><code>mkdir</code> komutu dizin oluşturmak için kullanılır. <code>playground</code> dizinimizi oluşturmak için önce <code>home</code> dizininde olduğumuza emin olacağız, sonra yeni dizini oluşturacağız.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cd
+[me@linuxbox ~]$ mkdir playground</code></pre>
+              <p>Oyun alanımızı biraz daha ilginç hale getirmek için, <code>dir1</code> ve <code>dir2</code> adında birkaç dizin oluşturalım. Bunu yapmak için geçerli çalışma dizinimizi <code>playground</code> olarak değiştireceğiz ve başka bir <code>mkdir</code> kullanacağız.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cd playground
+[me@linuxbox playground]$ mkdir dir1 dir2</code></pre>
+              <p><code>mkdir</code> komutunun her iki dizini de tek bir komutla oluşturduğuna dikkat edin.</p>
+              <h4 class="h5 mb-2">Dosyaları kopyalamak</h4>
+              <p>Ardından oyun alanımıza bazı veriler girelim. Bunu bir dosyayı kopyalayarak yapacağız. <code>cp</code> komutunu kullanarak <code>/etc</code> dizinindeki <code>passwd</code> dosyasını geçerli çalışma dizinine kopyalayacağız.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ cp /etc/passwd .</code></pre>
+              <p>Geçerli çalışma dizini için kısayol kullanıldığına (.) dikkat edin. Şimdi <code>ls</code> komutunu çalıştırırsak, dosyamızı göreceğiz.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ls -l
+total 12
+drwxrwxr-x 2 me me 4096 2018-01-10 16:40 dir1
+drwxrwxr-x 2 me me 4096 2018-01-10 16:40 dir2
+-rw-r--r-- 1 me me 1650 2018-01-10 16:07 passwd</code></pre>
+              <p>Şimdi, <code>-v</code> seçeneğini (verbose) kullanarak kopyalamayı tekrarlayalım.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ cp -v /etc/passwd .
+`/etc/passwd' -> `./passwd'</code></pre>
+              <p><code>cp</code> komutu kopyalamayı tekrar gerçekleştirdi, ancak bu kez hangi işlemi gerçekleştirdiğini belirten kısa bir mesaj görüntülendi. <code>cp</code>'nin ilk kopyalamayı hiçbir uyarı yapmadan gerçekleştirdiğine dikkat edin. Yine, bu ne yaptığınızı bildiğinizin varsayıldığı bir durumdur. Bir uyarı almak için <code>-i</code> (interactive) seçeneğini dahil edeceğiz.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ cp -i /etc/passwd .
+cp: overwrite `./passwd'?</code></pre>
+              <p>Bilgi istemine <code>y</code> girerek cevap vermek dosyanın üzerine yazılmasına neden olur, başka bir karakter (örneğin, <code>n</code>) kopyalamayı iptal eder.</p>
+              <h4 class="h5 mb-2">Dosyaları taşımak ve yeniden adlandırmak</h4>
+              <p><code>passwd</code> adı çok eğlenceli görünmüyor ve bu bir oyun alanı, o yüzden hadi başka bir şeyle değiştirelim.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ mv passwd fun</code></pre>
+              <p>Yeniden adlandırılan dosyamızı dizinler arasında taşıyarak ve tekrar geri getirerek biraz daha eğlenelim. Önce <code>dir1</code> dizinine taşıyalım:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ mv fun dir1</code></pre>
+              <p>Ardından <code>dir1</code>'den <code>dir2</code>'ye taşıyalım:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ mv dir1/fun dir2</code></pre>
+              <p>Son olarak, geçerli çalışma dizinine geri döndürelim:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ mv dir2/fun .</code></pre>
+              <p>Şimdi, <code>mv</code>'nin dizinler üzerindeki etkisini görelim. Önce veri dosyamızı tekrar <code>dir1</code>'e taşıyalım:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ mv fun dir1</code></pre>
+              <p>Daha sonra <code>dir1</code>'i <code>dir2</code>'ye taşıyalım ve <code>ls</code> ile doğrulayalım:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ mv dir1 dir2
+[me@linuxbox playground]$ ls -l dir2
+total 4
+drwxrwxr-x 2 me me 4096 2018-01-11 06:06 dir1
+[me@linuxbox playground]$ ls -l dir2/dir1
+total 4
+-rw-r--r-- 1 me me 1650 2018-01-10 16:33 fun</code></pre>
+              <p><code>dir2</code> zaten var olduğundan, <code>mv</code> komutu <code>dir1</code>'i <code>dir2</code>'ye taşır. Eğer <code>dir2</code> var olmasaydı, <code>dir1</code>'i' <code>dir2</code> olarak değiştirecekti. Son olarak, her şeyi eski yerine koyalım.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ mv dir2/dir1 .
+[me@linuxbox playground]$ mv dir1/fun .</code></pre>
+              <h4 class="h5 mb-2">Sabit bağlantı oluşturmak</h4>
+              <p>Öncelikle veri dosyamız için sabit bağlantılar oluşturalım:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ln fun fun-hard
+[me@linuxbox playground]$ ln fun dir1/fun-hard
+[me@linuxbox playground]$ ln fun dir2/fun-hard</code></pre>
+              <p>Şimdi <code>fun</code> dosyasının 4 örneğine sahibiz. <code>playground</code> dizinine bir göz atalım.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ls -l
+total 16
+drwxrwxr-x 2 me me 4096 2018-01-14 16:17 dir1
+drwxrwxr-x 2 me me 4096 2018-01-14 16:17 dir2
+-rw-r--r-- 4 me me 1650 2018-01-10 16:33 fun
+-rw-r--r-- 4 me me 1650 2018-01-10 16:33 fun-hard</code></pre>
+              <p>Dikkatinizi çekmek istediğimiz şey, hem <code>fun</code> hem de <code>fun-hard</code> satırlarında yer alan ikinci sütunların, şu anda dosya için varolan sabit bağlantı sayısını (4) göstermesidir. Bir dosyanın her zaman en az bir bağlantıya sahip olacağını unutmayın; çünkü dosyanın adı bir bağlantı tarafından oluşturulur. Peki, <code>fun</code> ve <code>fun-hard</code>'ın aslında aynı dosya olduğunu nasıl biliyoruz? <code>fun</code> ve <code>fun-hard</code>'ın aynı boyutta olduğunu görebilsek de emin olamayız. Bu sorunu çözmek için biraz daha derine inmek zorunda kalacağız.</p>
+              <p>Sabit bağlantılar hakkında düşünürken, dosyaların iki bölümden oluştuğunu hayal etmek faydalı olacaktır.</p>
+              <ol>
+                <li>Dosyanın içeriğini içeren veri bölümü.</li>
+                <li>Dosyanın ismini taşıyan isim bölümü.</li>
+              </ol>
+              <p>Sabit bağlantılar oluşturduğumuzda, aslında hepsi aynı veri bölümüne başvuran ek ad bölümleri yaratıyoruz. Sistem, <em>inode</em> denilen bir disk blok zinciri atar ve bu daha sonra isim bölümü ile ilişkilendirilir. Bu nedenle her bir sabit bağlantı, dosyanın içeriğini içeren belirli bir <em>inode</em> anlamına gelir.</p>
+              <p>Bu bilgiyi görebilmek için <code>ls</code> komutunu <code>-i</code> seçeneğiyle birlikte çağırın.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ls -li
+total 16
+12353539 drwxrwxr-x 2 me me 4096 2018-01-14 16:17 dir1
+12353540 drwxrwxr-x 2 me me 4096 2018-01-14 16:17 dir2
+12353538 -rw-r--r-- 4 me me 1650 2018-01-10 16:33 fun
+12353538 -rw-r--r-- 4 me me 1650 2018-01-10 16:33 fun-hard</code></pre>
+              <p>Listenin bu sürümünde, ilk sütun <em>inode</em> numarasıdır ve görebildiğimiz gibi, hem <code>fun</code> hem de <code>fun-hard</code> aynı dosya numarasını paylaşır; bu da aynı dosya olduğunu doğrular.</p>
+              <h4 class="h5 mb-2">Sembolik bağlantı oluşturmak</h4>
+              <p>Sabit bağlantıların 2 dezavantajının üstesinden gelmek için sembolik bağlantılar oluşturulmuştur.</p>
+              <ol>
+                <li>Sabit bağlantılar fiziksel aygıtları kapsamaz.</li>
+                <li>Sabit bağlantılar dizinleri referanslayamaz, sadece dosyalara referans verir.</li>
+              </ol>
+              <p>Sembolik bağlantılar, hedef dosya veya dizine bir metin işaretçisi içeren özel bir dosya türüdür. </p>
+              <p>Sembolik bağlantı oluşturmak, sabit bağlantı oluşturmaya benzer.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ln -s fun fun-sym
+[me@linuxbox playground]$ ln -s ../fun dir1/fun-sym
+[me@linuxbox playground]$ ln -s ../fun dir2/fun-sym</code></pre>
+              <p>İlk örnek oldukça açık; sabit bağlantı yerine sembolik bağlantı oluşturmak için <code>-s</code> seçeneğini ekliyoruz. Peki ya diğer ikisi? Unutmayın, sembolik bağlantı oluştururken, hedef dosyanın sembolik bağlantıya göre nerede olduğunu gösteren bir metin açıklaması oluşturuyoruz. Aşağıda gösterilen <code>ls</code> çıktısında görebilirsiniz:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ls -l dir1
+total 4
+-rw-r--r-- 4 me me 1650 2018-01-10 16:33 fun-hard
+lrwxrwxrwx 1 me me    6 2018-01-15 15:17 fun-sym -> ../fun</code></pre>
+              <p><code>dir1</code>'deki <code>fun-sym</code> için yaptığımız <code>ls</code> ilk sütünun başındaki <code>l</code>'yi ve <code>../fun</code>'ı işaret ettiğini, bunun sembolik bir bağlantı olduğunu gösterir. Ayrıca, sembolik bağlantı dosya uzunluğunun <code>../fun</code> dizisindeki karakter sayısını (6) gösterdiğine dikkat edin.</p>
+              <p>Sembolik bağlantılar oluştururken, aşağıda gösterildiği gibi mutlak yol adları da kullanabiliriz:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ln -s /home/me/playground/fun dir1/fun-syms</code></pre>
+              <p>Çoğu durumda, göreceli yol adlarının kullanılması tercih edilir çünkü sembolik bağlantı içeren bir dizin ağacının ve referans dosyaların, linkleri bozmadan yeniden adlandırılması ve/veya taşınmasını sağlar.</p>
+              <p>Normal dosyalara ek olarak, sembolik bağlantılar dizinleri de referans alabilir.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ln -s dir1 dir1-sym
+[me@linuxbox playground]$ ls -l
+total 16
+drwxrwxr-x 2 me me 4096 2018-01-15 15:17 dir1
+lrwxrwxrwx 1 me me    4 2018-01-16 14:45 dir1-sym -> dir1
+drwxrwxr-x 2 me me 4096 2018-01-15 15:17 dir2
+-rw-r--r-- 4 me me 1650 2018-01-10 16:33 fun
+-rw-r--r-- 4 me me 1650 2018-01-10 16:33 fun-hard
+lrwxrwxrwx 1 me me    3 2018-01-15 15:15 fun-sym -> fun</code></pre>
+              <h4 class="h5 mb-2">Dosya ve dizinleri kaldırmak</h4>
+              <p>Daha önce ele aldığımız gibi, <code>rm</code> komutu dosyaları ve dizinleri silmek için kullanılır. Şimdi, oyun alanımızı biraz temizleyelim. İlk önce sabit bağlantılardan birini siliyoruz.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ rm fun-hard
+[me@linuxbox playground]$ ls -l
+total 12
+drwxrwxr-x 2 me me 4096 2018-01-15 15:17 dir1
+lrwxrwxrwx 1 me me    4 2018-01-16 14:45 dir1-sym -> dir1
+drwxrwxr-x 2 me me 4096 2018-01-15 15:17 dir2
+-rw-r--r-- 3 me me 1650 2018-01-10 16:33 fun
+lrwxrwxrwx 1 me me    3 2018-01-15 15:15 fun-sym -> fun</code></pre>
+              <p>Beklendiği gibi çalıştı. <code>fun-hard</code> dosyası kayboldu ve <code>fun</code> için gösterilen bağlantı sayısı, dizin listesinin ikinci sütununda belirtildiği gibi 4'ten 3'e düştü. Şimdi, <code>fun</code> dosyasını silelim, ne yaptığını görmek için <code>-i</code> seçeneğini dahil edelim.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ rm -i fun
+rm: remove regular file `fun'?</code></pre>
+              <p>Komut istemine <code>y</code> girerek dosyayı silin. Şimdi <code>ls</code>'nin çıktısına bakalım. <code>fun-sym</code>'e ne olduğuna dikkat edin! Mevcut olmayan bir dosyaya işaret eden sembolik bir bağlantı olduğunu göreceksiniz.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ ls -l
+total 8
+drwxrwxr-x 2 me me 4096 2018-01-15 15:17 dir1
+lrwxrwxrwx 1 me me    4 2018-01-16 14:45 dir1-sym -> dir1
+drwxrwxr-x 2 me me 4096 2018-01-15 15:17 dir2
+lrwxrwxrwx 1 me me    3 2018-01-15 15:15 fun-sym -> fun</code></pre>
+              <p>Çoğu Linux dağıtımı kırık bağlantıları göstermek için <code>ls</code>'yi yapılandırır. Kırık bir bağlantının varlığı, kendi başına tehlikeli değildir, fakat oldukça dağınıktır. Kırık bir bağlantıyı kullanmaya çalışırsak şunu göreceğiz:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ less fun-sym
+fun-sym: No such file or directory</code></pre>
+              <p>Hadi biraz temizlik yapalım. Buradaki sembolik bağlantıları sileceğiz:</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ rm fun-sym dir1-sym
+[me@linuxbox playground]$ ls -l
+total 8
+drwxrwxr-x 2 me me 4096 2018-01-15 15:17 dir1
+drwxrwxr-x 2 me me 4096 2018-01-15 15:17 dir2</code></pre>
+              <p>Sembolik bağlantılar hakkında hatırlanması gereken bir şey, çoğu dosya işleminin bağlantının kendisinde değil, bağlantının hedefinde gerçekleştirilmesidir. <code>rm</code> bir istisnadır. Bir bağlantıyı sildiğimizde, silinen hedef değil bağlantıdır.</p>
+              <p>Sonunda oyun alanımızı kaldıracağız. Bunu yapmak için, ana dizine geri döneceğiz ve oyun alanını ve alt dizinleri dahil tüm içeriğini silmek için özyinelemeli seçenekle (<code>-r</code>) <code>rm</code>'yi kullanacağız.</p>
+              <pre><code class="language-bash">[me@linuxbox playground]$ cd
+[me@linuxbox ~]$ rm -r playground</code></pre>
             </section>
             <!-- / manipulating files and directories -->
 
