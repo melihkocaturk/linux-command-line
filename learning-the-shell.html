@@ -637,7 +637,7 @@ picture.jpg: JPEG image data, JFIF standard 1.01</code></pre>
                 </div>
               </div>
               <h3 class="h4 mb-2">Rehberli bir tur atalım</h3>
-              <p>Bir Linux sistemindeki dosya sistemi düzeni, diğer Unix benzeri sistemlerde bulananlara çok benzer. Tasarım aslında "Linux Filesystem Hierarchy Standard" adı verilen yayınlanmış bir standartta belirtilmiştir. Tüm Linux dağıtımları bu standarda tam olarak uymaz, ancak çoğu oldukça yakındır.</p>
+              <p>Bir Linux sistemindeki dosya sistemi düzeni, diğer Unix benzeri sistemlerde bulunanlara çok benzer. Tasarım aslında "Linux Filesystem Hierarchy Standard" adı verilen yayınlanmış bir standartta belirtilmiştir. Tüm Linux dağıtımları bu standarda tam olarak uymaz, ancak çoğu oldukça yakındır.</p>
               <p>Ardından, Linux'ün nasıl çalıştığını görmek için dosya sisteminin etrafında dolaşacağız. Bu bize navigasyon becerilerimizi uygulama şansı verecek. Keşfedeceğimiz şeylerden biri, dosyaların çoğunun insan tarafından okunabilen düz metin olduğudur. Turumuza başlamadan önce, aşağıdakileri deneyin:</p>
               <ul>
                 <li><code>cd</code> ile bir dizine girin</li>
@@ -1554,7 +1554,7 @@ ls (1)               - list directory contents</code></pre>
               </div>
               <h4 class="h5 mb-2">info - Bir programın info sayfasını görüntülemek</h4>
               <p>GNU Projesi, kendi programları için man sayfalarına alternatif olarak info sayfalarını sunar. Info sayfaları, <code>info</code> adı verilen bir okuyucu programı ile birlikte görüntülenir. Info sayfaları web sayfaları gibi linklere sahiptir. İşte bir örnek:</p>
-              <pre><code class="language-bash">Next: dir invocation,  Up: Directory listing
+              <pre><code>Next: dir invocation,  Up: Directory listing
 
 10.1 ‘ls’: List directory contents
 ==================================
@@ -1704,7 +1704,7 @@ alias ls='ls --color=tty'</code></pre>
                 <li><code>wc</code> - Her dosya için yeni satır, sözcük ve bayt sayıları yazdır</li>
                 <li><code>head</code> - Bir dosyanın ilk kısmını çıkar</li>
                 <li><code>tail</code> - Bir dosyanın son bölümünü çıkar</li>
-                <li><code>tee</code> - Standart girdiden oku ve standart çıktıya ve dosyalara yaz</li>
+                <li><code>tee</code> - Standart girişten oku ve standart çıkışa ve dosyalara yaz</li>
               </ul>
               <h3 class="h4 mb-2">Standart giriş, çıkış ve hata</h3>
               <p>Şimdiye kadar kullandığımız programların çoğu aynı şekilde çıktı üretiyor. Bu çıktı genellikle iki türden oluşur:</p>
@@ -1713,11 +1713,11 @@ alias ls='ls --color=tty'</code></pre>
                 <li>Programın nasıl çalıştığını bize bildiren durum ve hata mesajları</li>
               </ul>
               <p><code>ls</code> komutuna baktığımızda, sonuçlarını ve hata mesajlarını ekrana bastığını görebiliriz.</p>
-              <p><code>ls</code> gibi programlar "her şey bir dosya" temasını koruyarak aslında sonuçlarını <em>standard output</em> (genellikle <em>stdout</em> olarak ifade edilir) adı verilen özel bir dosyaya ve durum mesajlarını <em>standard error</em> (<em>stderr</em>) adı verilen başka bir dosyaya gönderir. Varsayılan olarak, hem standart çıktı hem de standart hata ekrana bağlanır ve bir disk dosyasına kaydedilmez.</p>
+              <p><code>ls</code> gibi programlar "her şey bir dosya" temasını koruyarak aslında sonuçlarını <em>standard output</em> (genellikle <em>stdout</em> olarak ifade edilir) adı verilen özel bir dosyaya ve durum mesajlarını <em>standard error</em> (<em>stderr</em>) adı verilen başka bir dosyaya gönderir. Varsayılan olarak, hem standart çıkış hem de standart hata ekrana bağlanır ve disteki bir dosyaya kaydedilmez.</p>
               <p>Ek olarak, pek çok program standart olarak klavyeye bağlı olan <em>standard input</em>'tan (<em>stdin</em>) girdi alır.</p>
               <p>I/O yönlendirme, çıktının nereye gittiğini ve girdinin nereden geldiğini değiştirmemizi sağlar. Normalde çıktı ekrana gider ve giriş klavyeden gelir, ancak I/O yönlendirmesi ile bunu değiştirebiliriz.</p>
-              <h3 class="h4 mb-2">Standart çıktıyı yönlendirme</h3>
-              <p>I/O yönlendirme, standart çıktının nereye gittiğini yeniden tanımlamamızı sağlar. Standart çıktıyı ekran yerine başka bir dosyaya yönlendirmek için <code>></code> yönlendirme operatörünü ve ardından dosyanın adını kullanırız. Bunu neden yapmak istiyoruz? Bir komutun çıktısını bir dosyada saklamak genellikle yararlıdır. Örneğin, kabuğa <code>ls</code> komutunun çıktısını ekran yerine <code>ls-output.txt</code> dosyasına göndermesini söyleyebiliriz:</p>
+              <h3 class="h4 mb-2">Standart çıkışı yönlendirmek</h3>
+              <p>I/O yönlendirme, standart çıkışın nereye gittiğini yeniden tanımlamamızı sağlar. Standart çıkışı ekran yerine başka bir dosyaya yönlendirmek için <code>></code> yönlendirme operatörünü ve ardından dosyanın adını kullanırız. Bunu neden yapmak istiyoruz? Bir komutun çıktısını bir dosyada saklamak genellikle yararlıdır. Örneğin, kabuğa <code>ls</code> komutunun çıktısını ekran yerine <code>ls-output.txt</code> dosyasına göndermesini söyleyebiliriz:</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ ls -l /usr/bin > ls-output.txt</code></pre>
               <p><code>/usr/bin</code> dizininin uzun listesini oluşturduk ve sonuçları <code>ls-output.txt</code> dosyasına gönderdik. Burada gösterilen komutun yönlendirilmiş çıktısını inceleyelim:</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ ls -l ls-output.txt
@@ -1727,7 +1727,7 @@ alias ls='ls --color=tty'</code></pre>
               <p>Şimdi yönlendirme testimizi biraz değişiklik yaparak tekrarlayalım. Dizin ismini olmayan bir isimle değiştireceğiz:</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ ls -l /bin/usr > ls-output.txt
 ls: cannot access /bin/usr: No such file or directory</code></pre>
-              <p>Bir hata mesajı aldık. Varolmayan bir dizini belirttiğimiz için bu mantıklı gelebilir, ancak hata mesajı <code>ls-output.txt</code> dosyasına yönlendirilmek yerine neden ekranda görüntülendi? Cevap, <code>ls</code> programının hata mesajlarını standart çıktıya göndermemesidir. Bunun yerine, iyi yazılmış Unix programlarının çoğu gibi, hata mesajlarını standart hataya gönderir. Standart hatanın nasıl yönlendirileceğini biraz sonra göreceğiz, ancak önce çıktı dosyamıza ne olduğuna bakalım:</p>
+              <p>Bir hata mesajı aldık. Varolmayan bir dizini belirttiğimiz için bu mantıklı gelebilir, ancak hata mesajı <code>ls-output.txt</code> dosyasına yönlendirilmek yerine neden ekranda görüntülendi? Cevap, <code>ls</code> programının hata mesajlarını standart çıkışa göndermemesidir. Bunun yerine, iyi yazılmış Unix programlarının çoğu gibi, hata mesajlarını standart hataya gönderir. Standart hatanın nasıl yönlendirileceğini biraz sonra göreceğiz, ancak önce çıktı dosyamıza ne olduğuna bakalım:</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ ls -l ls-output.txt
 -rw-rw-r-- 1 me me 0 2018-02-01 15:08 ls-output.txt</code></pre>
               <p>Dosya şimdi sıfır uzunluğa sahip! Bunun nedeni çıktıyı yeniden yönlendirdiğimizde, hedef dosyaya her zaman baştan yazılmasıdır. <code>ls</code> komutumuz sonuç vermedi, yeniden yönlendirme işlemi dosyaya yeniden yazmaya başladı ve ardından hata nedeniyle kesildi. Aslında, bir dosyayı gerçekten kesmemiz gerekirse (veya yeni, boş bir dosya oluşturursak), aşağıdaki gibi bir numara kullanabiliriz:</p>
@@ -1742,15 +1742,194 @@ ls: cannot access /bin/usr: No such file or directory</code></pre>
 [me@linuxbox ~]$ ls -l ls-output.txt
 -rw-rw-r-- 1 me me 503634 2018-02-01 15:45 ls-output.txt</code></pre>
               <p>Komutu üç kez tekrarladık, çıktı dosyasıda üç kat daha büyük oldu.</p>
-              <h3 class="h4 mb-2">Standart hatayı yönlendirme</h3>
-              <p>Standart hatanın yönlendirilmesi özel bir yönlendirme operatörünün kolaylığına sahip değildir. Standart hatayı yönlendirmek için dosya tanımlayıcısına başvurmamız gerekir. Bir program birkaç numaralı dosya akışından herhangi biri üzerinde çıktı üretebilir. Bu dosya akışlarının ilk üçünü standart girdi, çıktı ve hata olarak adlandırmış olsak da, kabuk bunları dahili olarak sırasıyla 0, 1 ve 2 dosya tanımlayıcıları olarak gösterir. Kabuk, dosya tanımlayıcı numarasını kullanarak dosyaları yönlendirmek için bir notasyon sağlar. Standart hata, 2 numaralı dosya tanımlayıcısı ile aynı olduğundan, standart hatayı bu notasyonla yönlendirebiliriz:</p>
+              <h3 class="h4 mb-2">Standart hatayı yönlendirmek</h3>
+              <p>Standart hatanın yönlendirilmesi özel bir yönlendirme operatörünün kolaylığına sahip değildir. Standart hatayı yönlendirmek için dosya tanımlayıcısına başvurmamız gerekir. Bir program birkaç numaralı dosya akışından herhangi biri üzerinde çıktı üretebilir. Bu dosya akışlarının ilk üçünü standart giriş, çıkış ve hata olarak adlandırmış olsak da, kabuk bunları dahili olarak sırasıyla 0, 1 ve 2 dosya tanımlayıcıları olarak gösterir. Kabuk, dosya tanımlayıcı numarasını kullanarak dosyaları yönlendirmek için bir notasyon sağlar. Standart hata, 2 numaralı dosya tanımlayıcısı ile aynı olduğundan, standart hatayı bu notasyonla yönlendirebiliriz:</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ ls -l /bin/usr 2> ls-error.txt</code></pre>
               <p>"2" dosya tanımlayıcısı, standart hatanın <code>ls-error.txt</code> dosyasına yönlendirilmesi için yönlendirme operatörünün hemen önüne yerleştirilir.</p>
-              <h4 class="h5 mb-2">Standart çıktı ve standart hatayı tek dosyaya yönlendirmek</h4>
-              <p></p>
+              <h4 class="h5 mb-2">Standart çıkış ve standart hatayı tek bir dosyaya yönlendirmek</h4>
+              <p>Bir komutun tüm çıktılarını tek bir dosyada tutmak isteyebileceğiniz durumlar vardır. Bunu yapmak için, hem standart çıkışı hem de standart hatayı aynı anda yönlendirmeliyiz. Bunu yapmanın iki yolu vardır. Burada, kabuğun eski sürümleriyle çalışan geleneksel yol gösterilmektedir:</p>
               <pre><code class="language-bash">[me@linuxbox ~]$ ls -l /bin/usr > ls-output.txt 2>&1</code></pre>
-              <p></p>
-              <p></p>
+              <p>Bu yöntemi kullanarak iki yönlendirme gerçekleştiriyoruz. Önce standart çıkışı <code>ls-output.txt</code> dosyasına yönlendiriyoruz ve daha sonra dosya tanımlayıcı 2'yi (standart hata) <code>2> & 1</code> notasyonunu kullanarak dosya tanımlayıcı 1'e (standart çıkış) yönlendiriyoruz.</p>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-info" role="alert">
+                    <h4>Not</h4>
+                    <p>Yönlendirmelerin sırasının önemli olduğuna dikkat edin. Standart hatanın yönlendirilmesi her zaman standart çıkışı yönlendirdikten sonra gerçekleşmelidir. Aşağıdaki örnek, standart hatayı <code>ls-output.txt</code> dosyasına yönlendirir:</p>
+                    <pre><code class="language-bash">>ls-output.txt 2>&1</code></pre>
+                    <p>Ancak, sıra aşağıdaki şekilde değiştirilirse, standart hata ekrana yönlendirilir.</p>
+                    <pre><code class="language-bash">2>&1 >ls-output.txt</code></pre>
+                    <i class="icon-info-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <p>Bash'ın son sürümleri, burada gösterilen bu birleşik yönlendirmeyi gerçekleştirmek için daha modern bir yöntem sağlar:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls -l /bin/usr &> ls-output.txt</code></pre>
+              <p>Bu örnekte, hem standart çıkışı hem de standart hatayı <code>ls-output.txt</code> dosyasına yönlendirmek için <code>&></code> notasyonunu kullanıyoruz. Standart çıkış ve standart hata akışlarını aşağıdaki gibi tek bir dosyaya ekleyebiliriz:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls -l /bin/usr &>> ls-output.txt</code></pre>
+              <h4 class="h5 mb-2">İstenmeyen çıktılardan kurtulmak</h4>
+              <p>Bazen "sükut altındır" ve bir komuttan çıktı almak yerine sadece ondan kurtulmak isteyebilirsiniz. Bu özellikle hata ve durum mesajları için geçerlidir. Sistem, çıktıyı "/dev/null" adlı özel bir dosyaya yönlendirerek bunu yapmanın bir yolunu sunar. Bu dosya, giriş kabul eden ve onunla hiçbir şey yapmayan, genellikle <em>bit bucket</em> olarak adlandırılan bir sistem cihazıdır. Bir komuttaki hata iletilerini bastırmak için şunu yapabiliriz:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls -l /bin/usr 2> /dev/null</code></pre>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-warning" role="alert">
+                    <h4>Unix kültüründe /dev/null</h4>
+                    <p>Bit bucket eski bir Unix konseptidir ve evrenselliği nedeniyle Unix kültürünün birçok yerinde ortaya çıkmıştır. Birisi yorumlarınızı <code>/dev/null</code>'a gönderdiğini söylediğinde, bunun ne anlama geldiğini bilirsiniz. Daha fazla örnek için <a href="https://en.wikipedia.org/wiki/Null_device" target="_blank">/dev/null hakkındaki Wikipedia makalesine</a> gözatın.</p>
+                    <i class="icon-alert-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <h3 class="h4 mb-2">Standart girişi yönlendirmek</h3>
+              <p>Şimdiye kadar, standart girişi kullanan herhangi bir komutla karşılaşmadık (aslında var, ancak bu sürprizi biraz sonra ortaya koyacağız), bu yüzden birini  tanıtmamız gerekiyor.</p>
+              <h4 class="h5 mb-2">cat - Dosyaları birleştir</h4>
+              <p><code>cat</code> komutu bir veya daha fazla dosyayı okur ve bunları standart çıkışa aşağıdaki gibi kopyalar:</p>
+              <pre><code class="language-bash">cat [file...]</code></pre>
+              <p>Çoğu durumda, <code>cat</code> komutunun <code>DOS</code>'taki <code>TYPE</code> komutuna benzediğini düşünebiliriz. Dosyaları sayfalama olmadan görüntülemek için kullanabiliriz. Örneğin, aşağıdakiler <code>ls-output.txt</code> dosyasının içeriğini görüntüler:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cat ls-output.txt</code></pre>
+              <p><code>cat</code> genellikle kısa metin dosyalarını görüntülemek için kullanılır. Birden fazla dosyayı argüman olarak kabul edebildiğinden, dosyaları birleştirmek için de kullanılabilir. Birden çok parçaya bölünmüş büyük bir dosya indirdiğimizi (multimedya dosyaları genellikle Usenet'te bu şekilde bölünür) ve bunları tekrar birleştirmek istediğimizi varsayalım. Dosyalar şu şekilde adlandırılmışsa: <code>movie.mpeg.001 movie.mpeg.002 ... movie.mpeg.099</code> bu komutla aşağıdaki gibi tekrar birleştirebiliriz: </p>
+              <pre><code class="language-bash">cat movie.mpeg.0* > movie.mpeg</code></pre>
+              <p>Joker karakterler her zaman sıralanmış düzende çalıştığı için, argümanlar doğru sırada düzenlenir.</p>
+              <p>Bunların hepsi iyi güzel, ama bunun standart giriş ile ne ilgisi var? Henüz ilgisi yok, ama başka bir şey deneyelim. Argüman olmadan <code>cat</code> komutunu girersek ne olur?</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cat</code></pre>
+              <p>Hiçbir şey olmuyor gibi görünebilir, ama gerçekten yapması gereken şeyi yapıyor.</p>
+              <p><code>cat</code>'e herhangi bir argüman verilmezse, standart girişi okur ve - standart giriş varsayılan olarak klavyeye bağlı olduğundan - bir şeyler yazmamızı bekler! Aşağıdaki metni eklemeyi ve Enter tuşuna basmayı deneyin:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cat
+The quick brown fox jumped over the lazy dog</code></pre>
+              <p>Ardından, <code>Ctrl-d</code> tuşlayarak (yani Ctrl tuşunu basılı tutun ve "d" tuşuna basın) <code>cat</code>'e standart girişte dosyanın sonuna (EOF) ulaştığını bildirin:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cat
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.</code></pre>
+              <p>Dosya adı argümanı bulunmadığında, <code>cat</code> standart girişi standart çıkışa kopyalar, bu nedenle metin satırımızın tekrarlandığını görürüz. Bu davranışı kısa metin dosyaları oluşturmak için kullanabiliriz. Diyelim ki örneğimizdeki metni içeren <code>lazy_dog.txt</code> adlı bir dosya oluşturmak istedik:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cat > lazy_dog.txt
+The quick brown fox jumped over the lazy dog.</code></pre>
+              <p>Komutu ve ardından dosyaya kaydetmek istediğiniz metni yazın. Sonunda <code>Ctrl-d</code> tuşlamayı unutmayın. Komut satırını kullanarak dünyanın en aptal kelime işlemcisini hayata geçirdik! Sonuçları görüntülemek için, tekrar <code>cat</code> kullanabiliriz.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cat lazy_dog.txt
+The quick brown fox jumped over the lazy dog.</code></pre>
+              <p>Artık <code>cat</code> komutunun standart girişi nasıl kabul ettiğini bildiğimize göre, dosya adı argümanlarına ek olarak standart girişi yeniden yönlendirmeyi deneyelim.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ cat < lazy_dog.txt
+The quick brown fox jumped over the lazy dog.</code></pre>
+              <p><code><</code> Yönlendirme işlecini kullanarak, standart girişin kaynağı olan klavyeyi <code>lazy_dog.txt</code> dosyası ile değiştirdiğimizde, sonucun aynı olduğunu görüyoruz. Diğer komutlar, - yakında göreceğimiz gibi - standart girişi daha iyi kullanır.</p>
+              <p>Devam etmeden önce, birkaç ilginç seçenek için <code>cat</code> man sayfalarına gözatın.</p>
+              <h3 class="h4 mb-2">Boru hatları</h3>
+              <p>Komutların standart girişten veri okuma ve standart çıkışa gönderme yeteneği, boru hatları (pipelines) adı verilen bir kabuk özelliğini kullanılır. Boru operatörü <code>|</code> (dikey çubuk) ile, bir komutun standart çıkışı başka bir komutun standart girişine bağlanabilir.</p>
+              <pre><code class="language-bash">command1 | command2</code></pre>
+              <p>Bunu tam olarak göstermek için bazı komutlara ihtiyacımız olacak. Sonuçlarını standart çıkışa gönderen herhangi bir komutun çıktısını sayfa sayfa görüntülemek için <code>less</code> kullanabiliriz:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls -l /usr/bin | less</code></pre>
+              <p>Son derece kullanışlı! Bu tekniği kullanarak, standart çıktı üreten herhangi bir komutun çıktısını rahatlıkla inceleyebiliriz.</p>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-warning" role="alert">
+                    <h4>> ve | arasındaki fark</h4>
+                    <p>İlk bakışta aradaki farkı anlamak zor olabilir. Basitçe söylemek gerekirse, yönlendirme operatörü <code>></code> bir komutu bir dosyaya bağlarken, boru hattı <code>|</code> operatörü bir komutun çıkışını ikinci bir komutun girişine bağlar.</p>
+                    <pre><code class="language-bash">command1 > file1
+command1 | command2</code></pre>
+                    <p>Birçok insan boru hatlarını öğrenirken - sadece ne olduğunu görmek için - aşağıdakileri deneyecek:</p>
+                    <pre><code class="language-bash">command1 > command2</code></pre>
+                    <p>Cevap: Bazen gerçekten kötü bir şey.</p>
+                    <p>İşte bir okurumuz tarafından gönderilen gerçek bir örnek. Süper kullanıcı olarak bunu yaptı:</p>
+                    <pre><code class="language-bash"># cd /usr/bin
+# ls > less</code></pre>
+                    <p>İlk komut onu çoğu programın saklandığı <code>/usr/bin</code> dizinine getirdi ve ikinci komut kabuğa <code>ls</code> komutunun çıktısını <code>less</code> dosyasının üzerine yazmasını söyledi. <code>/usr/bin</code> dizini zaten <code>less</code> (less programı) adında bir dosya içerdiğinden, ikinci komut <code>less</code> program dosyasının üzerine <code>ls</code>'den gelen metni yazmış ve böylece sistemindeki <code>less</code> programını yok etmiştir.</p>
+                    <p>Buradaki ders, yeniden yönlendirme operatörünün sessizce dosya oluşturması veya üzerine yazmasıdır, bu yüzden ona karşı dikkatli olmanız gerekir.</p>
+                    <i class="icon-alert-circle"></i>
+                  </div>
+                </div>
+              </div>
+              <h4 class="h5 mb-2">Filtreler</h4>
+              <p>Boru hatları genellikle veriler üzerinde karmaşık işlemler gerçekleştirmek için kullanılır. Boru hatları ile birkaç komutu bir araya getirmek mümkündür. Sıklıkla, bu şekilde kullanılan komutlara filtre denir. Filtreler girdiyi alır, bir şekilde değiştirir ve sonra çıktı üretir. İlk filtremizde sıralamayı deneyeceğiz. <code>/bin</code> ve <code>/usr/bin</code> içindeki tüm yürütülebilir programların birleşik bir listesini yapmak, bunları sıralamak ve ortaya çıkan listeyi görüntülemek istediğimizi düşünün:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls /bin /usr/bin | sort | less</code></pre>
+              <p>İki dizin (<code>/bin</code> ve <code>/usr/bin</code>) belirttiğimizden, <code>ls</code>'nin çıktısı iki ayrı sıralı listeden oluşacaktır. Boru hattımıza sıralama ekleyerek verileri tek, sıralanmış bir liste oluşturacak şekilde değiştirdik.</p>
+              <h4 class="h5 mb-2">uniq - Tekrarlanan satırları bildir veya atla</h4>
+              <p><code>uniq</code> komutu genellikle <code>sort</code> ile birlikte kullanılır. <code>uniq</code>, standart girişten veya bir dosyadan sıralı veri listesi kabul eder (ayrıntılar için <code>uniq</code> man sayfasına bakın) ve varsayılan olarak tekrarları listeden kaldırır. Bu nedenle, listemizde hiçbir tekrarlamanın olmadığından emin olmak için (yani, <code>/bin</code> ve <code>/usr/bin</code> dizinlerinde aynı ada sahip olan tüm programlar), boru hattımıza <code>uniq</code> ekleyeceğiz.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls /bin /usr/bin | sort | uniq | less</code></pre>
+              <p>Bu örnekte, <code>sort</code> komutunun çıktısından tekrarları kaldırmak için <code>uniq</code> kullanıyoruz. Bunun yerine tekrarlananların listesini görmek istiyorsak, "-d" seçeneğini şu şekilde ekliyoruz:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls /bin /usr/bin | sort | uniq -d | less</code></pre>
+              <h4 class="h5 mb-2">wc - Satır, kelime ve karakter sayılarını yazdır</h4>
+              <p><code>wc</code> (word count) komutu, dosyalarda bulunan satır, kelime ve karakter sayısını görüntülemek için kullanılır. İşte bir örnek:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ wc ls-output.txt
+7902 64566 503634 ls-output.txt</code></pre>
+              <p>Bu durumda, üç şeyi yazdırır: <code>ls-output.txt</code> dosyasında bulunan satır, kelime ve karakter sayıları. Komutu argüman olmadan yürütürseniz (önceki komutlarda olduğu gibi) standart girişi kabul eder. "-l" seçeneği çıktıyı satır sayısıyla sınırlar. Bir boru hattına <code>wc</code> eklemek, birşeyleri saymanın kullanışlı bir yoludur. Sıralı listemizde bulunan öğe sayısını görüntülemek için bunu yapabiliriz:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls /bin /usr/bin | sort | uniq | wc -l
+2728</code></pre>
+              <h4 class="h5 mb-2">grep - Patern ile eşleşen satırları yazdır</h4>
+              <p><code>grep</code>, dosyalardaki metin paternlerini bulmak için kullanılan güçlü bir programdır. Bu şekilde kullanılır:</p>
+              <pre><code class="language-bash">grep pattern [file...]</code></pre>
+              <p><code>grep</code> dosyada bir "patern" ile karşılaştığında, onu içeren satırları yazdırır. <code>grep</code>'in eşleşebileceği desenler çok karmaşık olabilir, ancak şimdilik basit metin eşleşmelerine odaklanacağız. İlerleyen bölümlerde <em>düzenli ifadeler</em> adı verilen gelişmiş paternleri ele alacağız.</p>
+              <p>Diyelim ki adında <code>zip</code> kelimesi geçen tüm programları bulmak istedik. Böyle bir arama, sistemimizdeki dosya sıkıştırmayla ilgili bazı programlar hakkında bize fikir verebilir.</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls /bin /usr/bin | sort | uniq | grep zip
+bunzip2
+bzip2
+gunzip
+gzip
+unzip
+zip
+zipcloak
+zipgrep
+zipinfo
+zipnote
+zipsplit</code></pre>
+              <p><code>grep</code> için birkaç kullanışlı seçenek:</p>
+              <ul>
+                <li><code>-i</code>, arama yapılırken <code>grep</code>'in büyük/küçük harfleri yoksaymasına neden olur (normalde aramalar büyük/küçük harfe duyarlıdır)</li>
+                <li><code>-v</code>, <code>grep</code>'e yalnızca paternle eşleşmeyen satırları yazdırmasını söyler.</li>
+              </ul>
+              <h4 class="h5 mb-2">head / tail - Dosyaların ilk / son kısmını yazdır</h4>
+              <p>Bazen bir komutun tüm çıktılarına ihtiyacımız olmayabilir. Sadece ilk birkaç satırı veya son birkaç satırı isteyebiliriz. <code>head</code> komutu bir dosyanın ilk on satırını ve <code>tail</code> komutu son on satırı yazdırır. Varsayılan olarak, her iki komut da on satır metin yazdırır, ancak bu <code>-n</code> seçeneğiyle ayarlanabilir.</p>
+              <pre><code class="language-bash">[me@linuxbox~]$ head -n 5 ls-output.txt
+total 343496
+-rwxr-xr-x 1 root root  31316 2007-12-05 08:58 [
+-rwxr-xr-x 1 root root   8240 2007-12-09 13:39 411toppm
+-rwxr-xr-x 1 root root 111276 2007-11-26 14:27 a2p
+-rwxr-xr-x 1 root root  25368 2006-10-06 20:16 a52dec
+[me@linuxbox~]$ tail -n 5 ls-output.txt
+-rwxr-xr-x 1 root root   5234 2007-06-27 10:56 znew
+-rwxr-xr-x 1 root root    691 2005-09-10 04:21 zonetab2pot.py
+-rw-r--r-- 1 root root    930 2007-11-01 12:23 zonetab2pot.pyc
+-rw-r--r-- 1 root root    930 2007-11-01 12:23 zonetab2pot.pyo
+lrwxrwxrwx 1 root root      6 2016-01-31 05:22 zsoelim -> soelim</code></pre>
+              <p>Bu komutlar boru hatlarında da kullanılabilir:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls /usr/bin | tail -n 5
+znew
+zonetab2pot.py
+zonetab2pot.pyc
+zonetab2pot.pyo
+zsoelim</code></pre>
+              <p><code>tail</code>, dosyaları gerçek zamanlı olarak görüntülememizi sağlayan bir seçeneğe sahiptir. Bu, log dosyalarını izlemek için kullanışlıdır. Aşağıdaki örnekte, <code>/var/log</code> içindeki <code>messages</code> (veya <code>messages</code> bulunamıyorsa <code>/var/log/syslog</code>) dosyasına bakacağız. <code>/var/log/messages</code> dosyası güvenlikle ilgili bilgileri içerebileceğinden, bazı Linux dağıtımlarında süper kullanıcı yetkileri gerekebilir:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ tail -f /var/log/messages
+Feb 8 13:40:05 twin4 dhclient: DHCPACK from 192.168.1.1
+Feb 8 13:40:05 twin4 dhclient: bound to 192.168.1.4 -- renewal in
+1652 seconds.
+Feb 8 13:55:32 twin4 mountd[3953]: /var/NFSv4/musicbox exported to
+both 192.168.1.0/24 and twin7.localdomain in
+192.168.1.0/24,twin7.localdomain
+Feb 8 14:07:37 twin4 dhclient: DHCPREQUEST on eth0 to 192.168.1.1
+port 67
+Feb 8 14:07:37 twin4 dhclient: DHCPACK from 192.168.1.1
+Feb 8 14:07:37 twin4 dhclient: bound to 192.168.1.4 -- renewal in
+1771 seconds.
+Feb 8 14:09:56 twin4 smartd[3468]: Device: /dev/hda, SMART
+Prefailure Attribute: 8 Seek_Time_Performance changed from 237 to 236
+Feb 8 14:10:37 twin4 mountd[3953]: /var/NFSv4/musicbox exported to
+both 192.168.1.0/24 and twin7.localdomain in
+192.168.1.0/24,twin7.localdomain
+Feb 8 14:25:07 twin4 sshd(pam_unix)[29234]: session opened for user
+me by (uid=0)
+Feb 8 14:25:36 twin4 su(pam_unix)[29279]: session opened for user
+root by me(uid=500)</code></pre>
+              <p>"-f" seçeneğini kullandığınızda, <code>tail</code> dosyayı izlemeye devam eder ve yeni satırlar eklendiğinde hemen ekranda görünür. Bu, <code>Ctrl-c</code> tuşlarına basana kadar devam eder.</p>
+              <h4 class="h5 mb-2">tee - Standart girişi oku, standat çıkış ve dosyalara kopyala</h4>
+              <p>Sıhhi tesisat metaforumuza uygun olarak, <code>tee</code> komutu boru hattımızda "t" şeklinde bir bağlantı noktası oluşturur. <code>tee</code> programı standart girişi okur ve hem standart çıkışa (verilerin ardışık düzende devam etmesine izin verir) hem de bir veya daha fazla dosyaya kopyalar. Bu, bir boru hattında işlenen içeriği yakalamak için kullanışlıdır. Aşağıda önceki örneklerimizden birini tekrarlıyoruz, bu kez - tüm dizin listesini <code>ls.txt</code> dosyasına kaydetmek için - <code>tee</code> komutunu <code>grep</code> komutunun önüne ekliyoruz:</p>
+              <pre><code class="language-bash">[me@linuxbox ~]$ ls /usr/bin | tee ls.txt | grep zip
+bunzip2
+bzip2
+gunzip
+gzip
+unzip
+zip
+zipcloak
+zipgrep
+zipinfo
+zipnote
+zipsplit</code></pre>
             </section>
             <!-- / redirection -->
 
@@ -1758,6 +1937,12 @@ ls: cannot access /bin/usr: No such file or directory</code></pre>
             <section id="section-7">
               <h2 class="section-title-2 mb-2">Dünyayı Kabuk Olarak Görmek <a data-scroll="" href="#section-7" class="anchor" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linki kopyala"><i class="icon-hash"></i></a></h2>
               <p>...</p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
             </section>
             <!-- / seeing the world as the shell sees it -->
 
